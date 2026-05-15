@@ -2,7 +2,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VAG Connector Database — VW · Audi · SEAT · Škoda</title>
+<title>VAG Connector Database — VW · Audi Electrical Connector Reference</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
 
@@ -38,58 +38,41 @@
   /* Header */
   header {
     border-bottom: 1px solid var(--border);
-    padding: 2rem 2.5rem 1.5rem;
     background: var(--bg);
     position: sticky;
     top: 0;
     z-index: 50;
   }
 
-  .header-top {
+  /* ── Top bar ── always visible ──────────────────────────────── */
+  .top-bar {
     display: flex;
-    align-items: flex-end;
-    gap: 1.5rem;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 0 2rem;
+    height: 52px;
   }
 
   .site-title {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: -0.02em;
     color: var(--text);
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
-  .site-title span {
-    color: var(--accent);
-  }
-
-  .site-sub {
-    font-size: 12px;
-    color: var(--text3);
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding-bottom: 3px;
-  }
-
-  .controls {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+  .site-title span { color: var(--accent); }
 
   .search-wrap {
     position: relative;
     flex: 1;
-    min-width: 220px;
-    max-width: 400px;
+    max-width: 380px;
   }
 
   .search-icon {
     position: absolute;
-    left: 11px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text3);
@@ -101,47 +84,244 @@
     width: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 5px;
     color: var(--text);
     font-family: var(--font);
-    font-size: 16px; /* prevents iOS auto-zoom on focus */
-    padding: 8px 12px 8px 32px;
+    font-size: 16px;
+    padding: 6px 10px 6px 28px;
     outline: none;
     transition: border-color 0.15s;
+    height: 32px;
   }
 
   input[type="text"]:focus { border-color: var(--accent); }
   input[type="text"]::placeholder { color: var(--text3); }
 
+  .filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text2);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0 10px;
+    height: 32px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: border-color .15s, color .15s;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .filter-toggle:hover { border-color: var(--border2); color: var(--text); }
+  .filter-toggle.active { border-color: var(--accent); color: var(--accent); }
+
+  .filter-toggle-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: none;
+    flex-shrink: 0;
+  }
+
+  .filter-toggle.has-filters .filter-toggle-dot { display: block; }
+
+  .stats-pill {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--text3);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .stats-pill .count { color: var(--accent); }
+
+  /* ── Filter panel ── desktop dropdown ───────────────────────── */
+  .filter-panel {
+    display: none;
+    padding: 10px 2rem 12px;
+    border-top: 1px solid var(--border);
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--bg);
+  }
+
+  .filter-panel.open { display: flex; }
+
   select {
     background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text2);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0 24px 0 8px;
+    height: 28px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23666'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    transition: border-color .15s, color .15s;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  select:focus { border-color: var(--accent); color: var(--text); outline: none; }
+  select option { text-transform: none; letter-spacing: 0; font-size: 12px; }
+  select optgroup { font-size: 11px; }
+
+  .filter-label {
+    font-size: 10px;
+    font-family: var(--mono);
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+
+  .filter-clear {
+    margin-left: auto;
+    font-size: 10px;
+    font-family: var(--mono);
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color .15s;
+  }
+
+  .filter-clear:hover { color: var(--accent); }
+
+  /* ── Mobile bottom drawer ────────────────────────────────────── */
+  .filter-drawer {
+    display: none; /* shown via JS on mobile */
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+  }
+
+  .filter-drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+  }
+
+  .filter-drawer-panel {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--surface);
+    border-radius: 12px 12px 0 0;
+    border-top: 1px solid var(--border2);
+    padding: 0 0 env(safe-area-inset-bottom, 16px);
+  }
+
+  .filter-drawer-handle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .filter-drawer-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    font-family: var(--font);
+  }
+
+  .filter-drawer-close {
+    width: 26px; height: 26px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text2);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .filter-drawer-body {
+    padding: 12px 18px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .drawer-filter-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .drawer-filter-label {
+    font-size: 10px;
+    font-family: var(--mono);
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .drawer-select {
+    width: 100%;
+    background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 6px;
     color: var(--text);
     font-family: var(--font);
-    font-size: 16px; /* prevents iOS auto-zoom on focus */
-    padding: 8px 28px 8px 12px;
+    font-size: 16px; /* iOS no-zoom */
+    padding: 10px 32px 10px 12px;
+    height: 44px;
     outline: none;
     cursor: pointer;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23666'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 10px center;
-    transition: border-color 0.15s;
+    background-position: right 12px center;
   }
-  select:focus { border-color: var(--accent); }
 
-  .stats-bar {
+  .drawer-actions {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-    font-size: 11px;
-    font-family: var(--mono);
-    color: var(--text3);
+    gap: 8px;
+    padding: 8px 18px 12px;
+    border-top: 1px solid var(--border);
   }
 
-  .stats-bar .count { color: var(--accent); }
+  .drawer-btn {
+    flex: 1;
+    height: 44px;
+    border-radius: 8px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: opacity .15s;
+  }
+
+  .drawer-btn-clear {
+    background: var(--surface2);
+    color: var(--text2);
+    border: 1px solid var(--border);
+  }
+
+  .drawer-btn-apply {
+    background: var(--accent);
+    color: #0f0f0f;
+  }
 
   /* Main layout */
   main {
@@ -508,134 +688,50 @@
 
   /* ── Mobile ───────────────────────────────────────────────────── */
   @media (max-width: 640px) {
-    header {
-      padding: 0.875rem 1rem 0;
-      position: sticky;
-      top: 0;
-    }
+    .top-bar { padding: 0 1rem; height: 50px; }
+    .site-title { font-size: 14px; }
+    .search-wrap { max-width: none; }
+    .stats-pill { display: none; }
 
-    .header-top {
-      margin-bottom: 0.75rem;
-      gap: 0.5rem;
-    }
+    /* hide desktop filter panel on mobile — use drawer instead */
+    .filter-panel { display: none !important; }
+    /* hide desktop filter toggle label, show icon only */
+    .filter-toggle { font-size: 0; padding: 0 10px; gap: 0; }
+    .filter-toggle::after { content: "⊞"; font-size: 15px; color: inherit; }
+    .filter-toggle .filter-toggle-dot { display: none !important; }
+    .filter-toggle.has-filters::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); position: absolute; top: 6px; right: 6px; }
+    .filter-toggle { position: relative; }
 
-    .site-title { font-size: 18px; }
-    .site-sub { display: none; }
-
-    .controls {
-      gap: 7px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto;
-    }
-
-    .search-wrap {
-      grid-column: 1 / -1;
-      max-width: none;
-      min-width: 0;
-    }
-
-    select {
-      font-size: 12px;
-      padding: 7px 24px 7px 8px;
-      min-width: 0;
-      width: 100%;
-    }
-
-    .stats-bar {
-      font-size: 10px;
-      margin-top: 0.6rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
-      /* Hide the etka warning on mobile — too long */
-      flex-wrap: nowrap;
-      overflow: hidden;
-    }
-
-    .stats-bar span:last-child { display: none; }
-
-    main {
-      padding: 0.75rem;
-    }
-
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 1px;
-    }
-
+    main { padding: 0.75rem; }
+    .grid { grid-template-columns: 1fr; gap: 1px; }
     .card { padding: 1rem; }
     .card-name { font-size: 13px; }
-
     .card-diagram { height: 70px; min-height: 70px; }
-
-    .card-meta {
-      grid-template-columns: 1fr 1fr;
-      gap: 4px 8px;
-    }
-
+    .card-diagram svg { height: 56px; max-height: 56px; }
+    .card-meta { gap: 4px 8px; }
     .meta-item .ml { font-size: 9px; }
     .meta-item .mv { font-size: 11px; }
 
-    /* Modal — full screen on mobile */
-    .modal-overlay {
-      padding: 0;
-      align-items: flex-end;
-    }
-
-    .modal {
-      max-width: 100%;
-      max-height: 92vh;
-      border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
-      border-bottom: none;
-    }
-
+    .modal-overlay { padding: 0; align-items: flex-end; }
+    .modal { max-width: 100%; max-height: 92vh; border-radius: 10px 10px 0 0; border-bottom: none; }
     .modal-inner { padding: 1.25rem 1rem; }
-
     .modal-title { font-size: 16px; }
-
-    .detail-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-
+    .detail-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .detail-item .dl { font-size: 9px; }
     .detail-item .dv { font-size: 12px; }
-
     .modal-colour-row { gap: 6px; }
-
-    .modal-colour-chip {
-      font-size: 11px;
-      padding: 3px 8px;
-    }
-
+    .modal-colour-chip { font-size: 11px; padding: 3px 8px; }
     .section-head { font-size: 9px; }
-
     .chip { font-size: 11px; padding: 2px 7px; }
-
     .usage-list li { font-size: 12px; }
-
     .notes-box { font-size: 12px; }
-
     .ref-link { font-size: 11px; }
-
-    .manufacturer-row {
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 10px;
-    }
-
+    .manufacturer-row { flex-wrap: wrap; gap: 6px; font-size: 10px; }
     .manufacturer-row span:last-child { display: none; }
-
-    footer {
-      padding: 1rem;
-      font-size: 10px;
-    }
+    footer { padding: 1rem; font-size: 10px; }
   }
 
-  /* ── Very small phones ────────────────────────────────────────── */
   @media (max-width: 380px) {
-    .controls { grid-template-columns: 1fr; }
-    .search-wrap { grid-column: 1; }
     .card-meta { grid-template-columns: 1fr; }
   }
 </style>
@@ -643,37 +739,48 @@
 <body>
 
 <header>
-  <div class="header-top">
-    <div>
-      <div class="site-title">VAG <span>Connector</span> DB</div>
-    </div>
-    <div class="site-sub">Volkswagen Audi Group · Electrical Connector Reference</div>
-  </div>
-  <div class="controls">
+  <div class="top-bar">
+    <div class="site-title">VAG <span>Connector</span> DB</div>
     <div class="search-wrap">
       <span class="search-icon">⌕</span>
-      <input type="text" id="search" placeholder="Search name, part number, application…" oninput="render()">
+      <input type="text" id="search" placeholder="Search name, part number, platform…" oninput="render()">
     </div>
-    <select id="filterFamily" onchange="render()">
-      <option value="">All families</option>
+    <!-- desktop filter toggle -->
+    <button class="filter-toggle" id="filterToggle" onclick="toggleFilters()">
+      <span class="filter-toggle-dot"></span>
+      Filters ▾
+    </button>
+    <span class="stats-pill">
+      <span class="count" id="shown">0</span>/<span class="count" id="total">0</span>
+    </span>
+  </div>
+
+  <!-- desktop filter panel (hidden until toggled) -->
+  <div class="filter-panel" id="filterPanel">
+    <span class="filter-label">Family</span>
+    <select id="filterFamily" onchange="render(); updateFilterState()">
+      <option value="">All</option>
     </select>
-    <select id="filterPins" onchange="render()">
-      <option value="">All pin counts</option>
-      <option value="1">1 pin</option>
-      <option value="2">2 pins</option>
-      <option value="3">3 pins</option>
-      <option value="4">4 pins</option>
-      <option value="5">5 pins</option>
-      <option value="6">6 pins</option>
-      <option value="8">8 pins</option>
-      <option value="10">10+ pins</option>
+    <span class="filter-label">Pins</span>
+    <select id="filterPins" onchange="render(); updateFilterState()">
+      <option value="">All</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="8">8</option>
+      <option value="10">10+</option>
     </select>
-    <select id="filterMfr" onchange="render()">
-      <option value="">All manufacturers</option>
+    <span class="filter-label">Mfr</span>
+    <select id="filterMfr" onchange="render(); updateFilterState()">
+      <option value="">All</option>
     </select>
-    <select id="filterColor" onchange="render()">
-      <option value="">All colours</option>
-      <option value="natural">Natural / cream</option>
+    <span class="filter-label">Colour</span>
+    <select id="filterColor" onchange="render(); updateFilterState()">
+      <option value="">All</option>
+      <option value="natural">Natural</option>
       <option value="black">Black</option>
       <option value="grey">Grey</option>
       <option value="white">White</option>
@@ -683,57 +790,155 @@
       <option value="yellow">Yellow</option>
       <option value="red">Red</option>
       <option value="orange">Orange</option>
-      <option value="violet">Violet / purple</option>
-      <option value="beige">Beige / tan</option>
+      <option value="violet">Violet</option>
+      <option value="beige">Beige</option>
     </select>
-    <select id="filterPlatform" onchange="render()">
-      <option value="">All platforms</option>
+    <span class="filter-label">Platform</span>
+    <select id="filterPlatform" onchange="render(); updateFilterState()">
+      <option value="">All</option>
       <optgroup label="Volkswagen">
-        <option value="Mk1">Mk1 (1974–1984)</option>
-        <option value="Mk2">Mk2 (1983–1992)</option>
-        <option value="Mk3">Mk3 (1991–2002)</option>
-        <option value="Mk4">Mk4 (1997–2010)</option>
-        <option value="Mk5">Mk5 (2003–2010)</option>
-        <option value="Mk6">Mk6 (2008–2014)</option>
-        <option value="Mk7">Mk7 (2012–2020)</option>
-        <option value="Mk8">Mk8 (2019–present)</option>
-        <option value="PQ25">PQ25 (Polo/Up)</option>
-        <option value="MQB">MQB platform</option>
+        <option value="Mk1">Mk1</option>
+        <option value="Mk2">Mk2</option>
+        <option value="Mk3">Mk3</option>
+        <option value="Mk4">Mk4</option>
+        <option value="Mk5">Mk5</option>
+        <option value="Mk6">Mk6</option>
+        <option value="Mk7">Mk7</option>
+        <option value="Mk8">Mk8</option>
+        <option value="PQ25">PQ25</option>
+        <option value="MQB">MQB</option>
       </optgroup>
       <optgroup label="Audi A3">
-        <option value="8L">8L (1996–2003)</option>
-        <option value="8P">8P (2003–2013)</option>
-        <option value="8V">8V (2012–2020)</option>
+        <option value="8L">8L</option>
+        <option value="8P">8P</option>
+        <option value="8V">8V</option>
       </optgroup>
-      <optgroup label="Audi A4 / S4 / RS4">
-        <option value="B3">B3 (1986–1994)</option>
-        <option value="B4">B4 (1994–2001)</option>
-        <option value="B5">B5 (1994–2002)</option>
-        <option value="B6">B6 (2000–2006)</option>
-        <option value="B7">B7 (2004–2008)</option>
-        <option value="B8">B8 (2007–2016)</option>
-        <option value="B9">B9 (2015–present)</option>
+      <optgroup label="Audi A4/S4">
+        <option value="B3">B3</option>
+        <option value="B4">B4</option>
+        <option value="B5">B5</option>
+        <option value="B6">B6</option>
+        <option value="B7">B7</option>
+        <option value="B8">B8</option>
+        <option value="B9">B9</option>
       </optgroup>
-      <optgroup label="Audi A6 / S6">
-        <option value="C4">C4 (1994–1997)</option>
-        <option value="C5">C5 (1997–2005)</option>
-        <option value="C6">C6 (2004–2011)</option>
-        <option value="C7">C7 (2011–2018)</option>
+      <optgroup label="Audi A6/S6">
+        <option value="C4">C4</option>
+        <option value="C5">C5</option>
+        <option value="C6">C6</option>
+        <option value="C7">C7</option>
       </optgroup>
-      <optgroup label="Multi-platform">
-        <option value="MLB">MLB platform</option>
+      <optgroup label="Platform">
+        <option value="MLB">MLB</option>
         <option value="All VAG">All VAG</option>
       </optgroup>
     </select>
-  </div>
-  <div class="stats-bar">
-    <span>Showing <span class="count" id="shown">0</span> of <span class="count" id="total">0</span> connectors</span>
-    <span>·</span>
-    <span id="families-count">0 families</span>
-    <span>·</span>
-    <span style="color: var(--text3)">⚠ Cross-check part numbers against ETKA before ordering</span>
+    <button class="filter-clear" onclick="clearFilters()">Clear all</button>
   </div>
 </header>
+
+<!-- mobile filter drawer (separate from header) -->
+<div class="filter-drawer" id="filterDrawer">
+  <div class="filter-drawer-backdrop" onclick="closeDrawer()"></div>
+  <div class="filter-drawer-panel">
+    <div class="filter-drawer-handle">
+      <span class="filter-drawer-title">Filters</span>
+      <button class="filter-drawer-close" onclick="closeDrawer()">×</button>
+    </div>
+    <div class="filter-drawer-body">
+      <div class="drawer-filter-row">
+        <span class="drawer-filter-label">Family</span>
+        <select class="drawer-select" id="drawerFamily" onchange="syncFromDrawer()">
+          <option value="">All families</option>
+        </select>
+      </div>
+      <div class="drawer-filter-row">
+        <span class="drawer-filter-label">Pin count</span>
+        <select class="drawer-select" id="drawerPins" onchange="syncFromDrawer()">
+          <option value="">All pin counts</option>
+          <option value="1">1 pin</option>
+          <option value="2">2 pins</option>
+          <option value="3">3 pins</option>
+          <option value="4">4 pins</option>
+          <option value="5">5 pins</option>
+          <option value="6">6 pins</option>
+          <option value="8">8 pins</option>
+          <option value="10">10+ pins</option>
+        </select>
+      </div>
+      <div class="drawer-filter-row">
+        <span class="drawer-filter-label">Manufacturer</span>
+        <select class="drawer-select" id="drawerMfr" onchange="syncFromDrawer()">
+          <option value="">All manufacturers</option>
+        </select>
+      </div>
+      <div class="drawer-filter-row">
+        <span class="drawer-filter-label">Housing colour</span>
+        <select class="drawer-select" id="drawerColor" onchange="syncFromDrawer()">
+          <option value="">All colours</option>
+          <option value="natural">Natural / cream</option>
+          <option value="black">Black</option>
+          <option value="grey">Grey</option>
+          <option value="white">White</option>
+          <option value="green">Green</option>
+          <option value="brown">Brown</option>
+          <option value="blue">Blue</option>
+          <option value="yellow">Yellow</option>
+          <option value="red">Red</option>
+          <option value="orange">Orange</option>
+          <option value="violet">Violet / purple</option>
+          <option value="beige">Beige / tan</option>
+        </select>
+      </div>
+      <div class="drawer-filter-row">
+        <span class="drawer-filter-label">Platform</span>
+        <select class="drawer-select" id="drawerPlatform" onchange="syncFromDrawer()">
+          <option value="">All platforms</option>
+          <optgroup label="Volkswagen">
+            <option value="Mk1">Mk1 (1974–1984)</option>
+            <option value="Mk2">Mk2 (1983–1992)</option>
+            <option value="Mk3">Mk3 (1991–2002)</option>
+            <option value="Mk4">Mk4 (1997–2010)</option>
+            <option value="Mk5">Mk5 (2003–2010)</option>
+            <option value="Mk6">Mk6 (2008–2014)</option>
+            <option value="Mk7">Mk7 (2012–2020)</option>
+            <option value="Mk8">Mk8 (2019–present)</option>
+            <option value="PQ25">PQ25 (Polo/Up)</option>
+            <option value="MQB">MQB platform</option>
+          </optgroup>
+          <optgroup label="Audi A3">
+            <option value="8L">8L (1996–2003)</option>
+            <option value="8P">8P (2003–2013)</option>
+            <option value="8V">8V (2012–2020)</option>
+          </optgroup>
+          <optgroup label="Audi A4 / S4 / RS4">
+            <option value="B3">B3 (1986–1994)</option>
+            <option value="B4">B4 (1994–2001)</option>
+            <option value="B5">B5 (1994–2002)</option>
+            <option value="B6">B6 (2000–2006)</option>
+            <option value="B7">B7 (2004–2008)</option>
+            <option value="B8">B8 (2007–2016)</option>
+            <option value="B9">B9 (2015–present)</option>
+          </optgroup>
+          <optgroup label="Audi A6 / S6">
+            <option value="C4">C4 (1994–1997)</option>
+            <option value="C5">C5 (1997–2005)</option>
+            <option value="C6">C6 (2004–2011)</option>
+            <option value="C7">C7 (2011–2018)</option>
+          </optgroup>
+          <optgroup label="Multi-platform">
+            <option value="MLB">MLB platform</option>
+            <option value="All VAG">All VAG</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <div class="drawer-actions">
+      <button class="drawer-btn drawer-btn-clear" onclick="clearFilters(); closeDrawer()">Clear all</button>
+      <button class="drawer-btn drawer-btn-apply" onclick="closeDrawer()">Done</button>
+    </div>
+  </div>
+</div>
 
 <main>
   <div class="grid" id="grid"></div>
@@ -3697,16 +3902,91 @@ function makeSVG(type){
   return templates[type] || templates['inline2'];
 }
 
+// ─── FILTER PANEL / DRAWER ───────────────────────────────────────────────────
+const MOBILE_BP = 640;
+
+function isMobile(){ return window.innerWidth <= MOBILE_BP; }
+
+function toggleFilters(){
+  if(isMobile()){
+    openDrawer();
+  } else {
+    const panel = document.getElementById('filterPanel');
+    const btn = document.getElementById('filterToggle');
+    const open = panel.classList.toggle('open');
+    btn.classList.toggle('active', open);
+    btn.innerHTML = (open ? '▴' : '▾') + ' Filters' + (btn.classList.contains('has-filters') ? '<span class="filter-toggle-dot"></span>' : '');
+    // rebuild button cleanly
+    btn.innerHTML = `<span class="filter-toggle-dot"></span>${open ? '▴' : '▾'} Filters`;
+  }
+}
+
+function openDrawer(){
+  // sync desktop values → drawer
+  document.getElementById('drawerFamily').value   = document.getElementById('filterFamily').value;
+  document.getElementById('drawerPins').value     = document.getElementById('filterPins').value;
+  document.getElementById('drawerMfr').value      = document.getElementById('filterMfr').value;
+  document.getElementById('drawerColor').value    = document.getElementById('filterColor').value;
+  document.getElementById('drawerPlatform').value = document.getElementById('filterPlatform').value;
+  document.getElementById('filterDrawer').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer(){
+  document.getElementById('filterDrawer').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function syncFromDrawer(){
+  document.getElementById('filterFamily').value   = document.getElementById('drawerFamily').value;
+  document.getElementById('filterPins').value     = document.getElementById('drawerPins').value;
+  document.getElementById('filterMfr').value      = document.getElementById('drawerMfr').value;
+  document.getElementById('filterColor').value    = document.getElementById('drawerColor').value;
+  document.getElementById('filterPlatform').value = document.getElementById('drawerPlatform').value;
+  render();
+  updateFilterState();
+}
+
+function clearFilters(){
+  ['filterFamily','filterPins','filterMfr','filterColor','filterPlatform'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  ['drawerFamily','drawerPins','drawerMfr','drawerColor','drawerPlatform'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  render();
+  updateFilterState();
+}
+
+function updateFilterState(){
+  const active = ['filterFamily','filterPins','filterMfr','filterColor','filterPlatform']
+    .some(id => document.getElementById(id).value !== '');
+  const btn = document.getElementById('filterToggle');
+  btn.classList.toggle('has-filters', active);
+}
+
 // ─── POPULATE SELECTS ────────────────────────────────────────────────────────
 function populateSelects(){
   const fams = [...new Set(connectors.map(c=>c.family))].sort();
   const mfrs = [...new Set(connectors.map(c=>c.manufacturer))].sort();
+
   const fSel = document.getElementById('filterFamily');
   const mSel = document.getElementById('filterMfr');
-  fams.forEach(f=>{ const o=document.createElement('option'); o.value=f; o.textContent=f; fSel.appendChild(o); });
-  mfrs.forEach(m=>{ const o=document.createElement('option'); o.value=m; o.textContent=m; mSel.appendChild(o); });
+  const dfSel = document.getElementById('drawerFamily');
+  const dmSel = document.getElementById('drawerMfr');
+
+  fams.forEach(f=>{
+    const o = () => { const el=document.createElement('option'); el.value=f; el.textContent=f; return el; };
+    fSel.appendChild(o());
+    dfSel.appendChild(o());
+  });
+  mfrs.forEach(m=>{
+    const o = () => { const el=document.createElement('option'); el.value=m; el.textContent=m; return el; };
+    mSel.appendChild(o());
+    dmSel.appendChild(o());
+  });
+
   document.getElementById('total').textContent = connectors.length;
-  document.getElementById('families-count').textContent = fams.length + ' families';
 }
 
 // ─── COLOUR HELPERS ──────────────────────────────────────────────────────────
