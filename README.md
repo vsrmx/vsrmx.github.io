@@ -213,17 +213,20 @@
     align-items: center;
     justify-content: center;
     height: 80px;
+    min-height: 80px; /* iOS Safari needs this — height alone can collapse */
     border: 1px solid var(--border);
     overflow: hidden;
     padding: 8px;
+    -webkit-transform: translateZ(0); /* force GPU layer on iOS */
   }
 
   .card-diagram svg {
     max-width: 100%;
-    max-height: 64px;
     width: auto;
-    height: auto;
+    height: 64px; /* explicit px — iOS Safari collapses height:auto on SVG in flex */
+    max-height: 64px;
     display: block;
+    -webkit-transform: translateZ(0);
   }
 
   .card-meta {
@@ -360,14 +363,16 @@
     margin-bottom: 1.25rem;
     min-height: 100px;
     overflow: hidden;
+    -webkit-transform: translateZ(0);
   }
 
   .modal-diagram svg {
     max-width: 100%;
-    max-height: 120px;
     width: auto;
-    height: auto;
+    height: 120px; /* explicit px for iOS Safari */
+    max-height: 120px;
     display: block;
+    -webkit-transform: translateZ(0);
   }
 
   .detail-grid {
@@ -561,7 +566,7 @@
     .card { padding: 1rem; }
     .card-name { font-size: 13px; }
 
-    .card-diagram { height: 70px; }
+    .card-diagram { height: 70px; min-height: 70px; }
 
     .card-meta {
       grid-template-columns: 1fr 1fr;
