@@ -647,7 +647,7 @@
     <div>
       <div class="site-title">VAG <span>Connector</span> DB</div>
     </div>
-    <div class="site-sub">Volkswagen Audi Group Electrical Connector Reference</div>
+    <div class="site-sub">Volkswagen Audi Group · Electrical Connector Reference</div>
   </div>
   <div class="controls">
     <div class="search-wrap">
