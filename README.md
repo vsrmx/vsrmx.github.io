@@ -710,7 +710,164 @@
   footer a { color: var(--text3); text-decoration: none; }
   footer a:hover { color: var(--accent); }
 
-  /* ── Tablet ───────────────────────────────────────────────────── */
+  /* ── Tab navigation ──────────────────────────────────── */
+  .tab-nav {
+    display: flex;
+    gap: 2px;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text3);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 10px 16px;
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color .15s, border-color .15s;
+  }
+
+  .tab-btn:hover { color: var(--text2); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ── Reference tab layout ────────────────────────────── */
+  .ref-pane {
+    padding: 2rem 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .ref-section {
+    margin-bottom: 3rem;
+  }
+
+  .ref-section-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: .4rem;
+  }
+
+  .ref-section-desc {
+    font-size: 13px;
+    color: var(--text3);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    max-width: 760px;
+  }
+
+  .ref-section-desc code {
+    font-family: var(--mono);
+    background: var(--surface);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .ref-card {
+    background: var(--surface);
+    padding: 1.25rem;
+  }
+
+  .ref-card-head {
+    font-size: 11px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--accent);
+    margin-bottom: .75rem;
+  }
+
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--text2);
+  }
+
+  .ref-table th {
+    text-align: left;
+    font-size: 10px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 0 8px 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+
+  .ref-table td {
+    padding: 5px 8px 5px 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+    color: var(--text2);
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table td:first-child { color: var(--text); }
+
+  .seal-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    vertical-align: middle;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+
+  .wire-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 8px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.15);
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+
+  .ref-note {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: .75rem;
+    line-height: 1.6;
+    padding-left: .75rem;
+    border-left: 2px solid var(--border2);
+  }
+
+  @media (max-width: 640px) {
+    .tab-nav { padding: 0 1rem; }
+    .tab-btn { font-size: 10px; padding: 8px 12px; }
+    .ref-pane { padding: 1rem; }
+    .ref-grid { grid-template-columns: 1fr; }
+    .ref-table { font-size: 11px; }
+    .ref-section-title { font-size: 15px; }
+  }
+
+  /* ── Tab pane visibility ─────────────────────────────── */
+  .tab-pane { display: block; }
+  .tab-pane[style*="display:none"] { display: none !important; }
   @media (max-width: 900px) {
     .grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
   }
@@ -970,88 +1127,337 @@
   </div>
 </div>
 
-<main>
+<!-- ── Tab nav ─────────────────────────────────────────── -->
+<div class="tab-nav" id="tabNav">
+  <button class="tab-btn active" onclick="switchTab('connectors',this)">Connectors</button>
+  <button class="tab-btn" onclick="switchTab('reference',this)">Reference</button>
+</div>
+
+<!-- ── Connectors tab ──────────────────────────────────── -->
+<main id="tab-connectors" class="tab-pane active">
   <div class="grid" id="grid"></div>
 </main>
 
-<footer>
-  <span>VAG Connector DB — community reference</span>
-  <span>·</span>
-  <span>Part numbers verified where possible; always cross-check against ETKA/ElsaWin</span>
-  <span>·</span>
-  <span>Manufacturers: TE Connectivity / AMP · KOSTAL · Bosch · Yazaki · Hirschmann</span>
-</footer>
+<!-- ── Reference tab ───────────────────────────────────── -->
+<main id="tab-reference" class="tab-pane ref-pane" style="display:none">
 
-<section id="terminal-ref" style="max-width:1400px;margin:0 auto;padding:0 2.5rem 3rem;">
-  <div style="border-top:1px solid var(--border);padding-top:2rem;">
-    <div style="font-size:11px;font-family:var(--mono);color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;">Terminal & wire seal reference — sourced from VWVortex thread #6948714</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
+  <!-- Terminals & Wire Seals -->
+  <section class="ref-section">
+    <h2 class="ref-section-title">Terminals &amp; Wire Seals</h2>
+    <p class="ref-section-desc">VAG part numbers and TE Connectivity / Tyco cross-references. Source: VWVortex thread #6948714. Terminals sold in bags of 25 — VW does not supply gold-plated terminals.</p>
+    <div class="ref-grid">
 
-      <div>
-        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem;">1.5mm TERMINALS (Micro Timer / female)</div>
-        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10335706</td><td>0.35–0.5mm² · Tyco 969019-2 (tin) / 969019-3 (gold)</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10335807</td><td>0.5–1.0mm² · Tyco 964275-2 (tin) / 964275-3 (gold)</td></tr>
+      <div class="ref-card">
+        <div class="ref-card-head">1.5mm Terminals — Female (Micro Timer cavities)</div>
+        <table class="ref-table">
+          <thead><tr><th>VAG P/N</th><th>Wire gauge</th><th>Tyco tin</th><th>Tyco gold</th></tr></thead>
+          <tbody>
+            <tr><td>N 10335706</td><td>0.35–0.5 mm²</td><td>969019-2</td><td>969019-3</td></tr>
+            <tr><td>N 10335807</td><td>0.5–1.0 mm²</td><td>964275-2</td><td>964275-3</td></tr>
+          </tbody>
         </table>
-        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin:.75rem 0 .5rem;">1.5mm TERMINALS (male)</div>
-        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10336005</td><td>0.35–0.5mm² · Tyco 969029-2 / 969029-3</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10336105</td><td>0.5–1.0mm² · Tyco 964270-2 / 964270-3</td></tr>
+        <div class="ref-card-head" style="margin-top:1rem">1.5mm Terminals — Male</div>
+        <table class="ref-table">
+          <thead><tr><th>VAG P/N</th><th>Wire gauge</th><th>Tyco tin</th><th>Tyco gold</th></tr></thead>
+          <tbody>
+            <tr><td>N 10336005</td><td>0.35–0.5 mm²</td><td>969029-2</td><td>969029-3</td></tr>
+            <tr><td>N 10336105</td><td>0.5–1.0 mm²</td><td>964270-2</td><td>964270-3</td></tr>
+          </tbody>
         </table>
       </div>
 
-      <div>
-        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem;">2.8mm TERMINALS (JPT / female)</div>
-        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90684307</td><td>0.35–0.5mm² · Tyco 964281-2 / 964281-4</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90684405</td><td>0.5–1.0mm² · Tyco 964285-2 / 964285-4</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90684505</td><td>1.5–2.5mm² · Tyco 964287-2 / 964287-5</td></tr>
+      <div class="ref-card">
+        <div class="ref-card-head">2.8mm Terminals — Female (JPT / VW Tab cavities)</div>
+        <table class="ref-table">
+          <thead><tr><th>VAG P/N</th><th>Wire gauge</th><th>Tyco tin</th><th>Tyco gold</th></tr></thead>
+          <tbody>
+            <tr><td>N 90684307</td><td>0.35–0.5 mm²</td><td>964281-2</td><td>964281-4</td></tr>
+            <tr><td>N 90684405</td><td>0.5–1.0 mm²</td><td>964285-2</td><td>964285-4</td></tr>
+            <tr><td>N 90684505</td><td>1.5–2.5 mm²</td><td>964287-2</td><td>964287-5</td></tr>
+          </tbody>
         </table>
-        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin:.75rem 0 .5rem;">2.8mm TERMINALS (male)</div>
-        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10318905</td><td>0.5–1.0mm² · Tyco 2-964299-1 / 1-964299-3</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10319005</td><td>1.5–2.5mm² · Tyco 2-964301-1 / 1-964301-3</td></tr>
-        </table>
-      </div>
-
-      <div>
-        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem;">4.8mm TERMINALS (SPT)</div>
-        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10319103</td><td>0.5–1.0mm² male · Tyco 964309-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10319203</td><td>1.5–2.5mm² male · Tyco 964311-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10319303</td><td>4.0mm² male · Tyco 964313-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90732603</td><td>0.5–1.0mm² female · Tyco 969041-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90732703</td><td>1.5–2.5mm² female · Tyco 969043-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90696603</td><td>4.0mm² female · Tyco 969045-1</td></tr>
+        <div class="ref-card-head" style="margin-top:1rem">2.8mm Terminals — Male</div>
+        <table class="ref-table">
+          <thead><tr><th>VAG P/N</th><th>Wire gauge</th><th>Tyco tin</th><th>Tyco gold</th></tr></thead>
+          <tbody>
+            <tr><td>N 10318905</td><td>0.5–1.0 mm²</td><td>2-964299-1</td><td>1-964299-3</td></tr>
+            <tr><td>N 10319005</td><td>1.5–2.5 mm²</td><td>2-964301-1</td><td>1-964301-3</td></tr>
+          </tbody>
         </table>
       </div>
 
-      <div>
-        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem;">WIRE SEALS — 1.5mm (3.9×7.8mm)</div>
-        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972740D</td><td>grey · 0.5–0.75mm² · Tyco 963530-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972740E</td><td>red · 0.35–0.5mm² · Tyco 964971-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972740F</td><td>yellow · 1.0mm² · Tyco 964972-1</td></tr>
+      <div class="ref-card">
+        <div class="ref-card-head">4.8mm Terminals (SPT / high-current)</div>
+        <table class="ref-table">
+          <thead><tr><th>VAG P/N</th><th>Wire gauge</th><th>Gender</th><th>Tyco tin</th></tr></thead>
+          <tbody>
+            <tr><td>N 10319103</td><td>0.5–1.0 mm²</td><td>Male</td><td>964309-1</td></tr>
+            <tr><td>N 10319203</td><td>1.5–2.5 mm²</td><td>Male</td><td>964311-1</td></tr>
+            <tr><td>N 10319303</td><td>4.0 mm²</td><td>Male</td><td>964313-1</td></tr>
+            <tr><td>N 90732603</td><td>0.5–1.0 mm²</td><td>Female</td><td>969041-1</td></tr>
+            <tr><td>N 90732703</td><td>1.5–2.5 mm²</td><td>Female</td><td>969043-1</td></tr>
+            <tr><td>N 90696603</td><td>4.0 mm²</td><td>Female</td><td>969045-1</td></tr>
+          </tbody>
         </table>
-        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin:.75rem 0 .5rem;">WIRE SEALS — 2.8mm (5.6×7.8mm)</div>
-        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972741</td><td>blue · 0.35–1.0mm² · Tyco 963294-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972741A</td><td>red · 1.5mm² · Tyco 963293-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972741B</td><td>yellow · 1.5–2.5mm² · Tyco 963292-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972841</td><td>green · cavity plug · Tyco 828922-1</td></tr>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Wire Seals — 1.5mm (3.9×7.8mm cavity)</div>
+        <table class="ref-table">
+          <thead><tr><th>VAG P/N</th><th>Colour</th><th>Wire gauge</th><th>Tyco P/N</th></tr></thead>
+          <tbody>
+            <tr><td>357972740D</td><td><span class="seal-dot" style="background:#888"></span> Grey</td><td>0.5–0.75 mm²</td><td>963530-1</td></tr>
+            <tr><td>357972740E</td><td><span class="seal-dot" style="background:#cc2222"></span> Red</td><td>0.35–0.5 mm²</td><td>964971-1</td></tr>
+            <tr><td>357972740F</td><td><span class="seal-dot" style="background:#c8b030"></span> Yellow</td><td>1.0 mm²</td><td>964972-1</td></tr>
+          </tbody>
         </table>
-        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin:.75rem 0 .5rem;">WIRE SEALS — 4.8mm (9.0×7.8mm)</div>
-        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972742A</td><td>white · 0.5–1.0mm² · Tyco 963243-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972742B</td><td>red · 1.5–2.5mm² · Tyco 963244-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972742E</td><td>blue · 2.5–4.0mm² · Tyco 963245-1</td></tr>
-          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972842</td><td>black · cavity plug · Tyco 100132-1</td></tr>
+        <div class="ref-card-head" style="margin-top:1rem">Wire Seals — 2.8mm (5.6×7.8mm cavity)</div>
+        <table class="ref-table">
+          <thead><tr><th>VAG P/N</th><th>Colour</th><th>Wire gauge</th><th>Tyco P/N</th></tr></thead>
+          <tbody>
+            <tr><td>357972741</td><td><span class="seal-dot" style="background:#3a6aaa"></span> Blue</td><td>0.35–1.0 mm²</td><td>963294-1</td></tr>
+            <tr><td>357972741A</td><td><span class="seal-dot" style="background:#cc2222"></span> Red</td><td>1.5 mm²</td><td>963293-1</td></tr>
+            <tr><td>357972741B</td><td><span class="seal-dot" style="background:#c8b030"></span> Yellow</td><td>1.5–2.5 mm²</td><td>963292-1</td></tr>
+            <tr><td>357972841</td><td><span class="seal-dot" style="background:#3a8c3a"></span> Green</td><td>Cavity plug</td><td>828922-1</td></tr>
+          </tbody>
+        </table>
+        <div class="ref-card-head" style="margin-top:1rem">Wire Seals — 4.8mm (9.0×7.8mm cavity)</div>
+        <table class="ref-table">
+          <thead><tr><th>VAG P/N</th><th>Colour</th><th>Wire gauge</th><th>Tyco P/N</th></tr></thead>
+          <tbody>
+            <tr><td>357972742A</td><td><span class="seal-dot" style="background:#e8e8e0"></span> White</td><td>0.5–1.0 mm²</td><td>963243-1</td></tr>
+            <tr><td>357972742B</td><td><span class="seal-dot" style="background:#cc2222"></span> Red</td><td>1.5–2.5 mm²</td><td>963244-1</td></tr>
+            <tr><td>357972742E</td><td><span class="seal-dot" style="background:#3a6aaa"></span> Blue</td><td>2.5–4.0 mm²</td><td>963245-1</td></tr>
+            <tr><td>357972842</td><td><span class="seal-dot" style="background:#1a1a1a"></span> Black</td><td>Cavity plug</td><td>100132-1</td></tr>
+          </tbody>
         </table>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Wire Colour Codes -->
+  <section class="ref-section">
+    <h2 class="ref-section-title">Wire Colour Codes</h2>
+    <p class="ref-section-desc">VAG uses DIN 72551 colour abbreviations. Format is base colour / tracer stripe (e.g. <code>sw/rt</code> = black with red tracer). Single-colour wires have no slash.</p>
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card-head">Colour abbreviations (DIN 72551)</div>
+        <table class="ref-table">
+          <thead><tr><th>Code</th><th>Colour (DE)</th><th>Colour (EN)</th><th>Swatch</th></tr></thead>
+          <tbody>
+            <tr><td>sw</td><td>Schwarz</td><td>Black</td><td><span class="wire-swatch" style="background:#1a1a1a"></span></td></tr>
+            <tr><td>br</td><td>Braun</td><td>Brown</td><td><span class="wire-swatch" style="background:#8b4a1a"></span></td></tr>
+            <tr><td>rt</td><td>Rot</td><td>Red</td><td><span class="wire-swatch" style="background:#cc2222"></span></td></tr>
+            <tr><td>or</td><td>Orange</td><td>Orange</td><td><span class="wire-swatch" style="background:#d4701a"></span></td></tr>
+            <tr><td>ge</td><td>Gelb</td><td>Yellow</td><td><span class="wire-swatch" style="background:#c8b030"></span></td></tr>
+            <tr><td>gn</td><td>Grün</td><td>Green</td><td><span class="wire-swatch" style="background:#3a8c3a"></span></td></tr>
+            <tr><td>bl</td><td>Blau</td><td>Blue</td><td><span class="wire-swatch" style="background:#3a6aaa"></span></td></tr>
+            <tr><td>vi</td><td>Violett</td><td>Violet / Purple</td><td><span class="wire-swatch" style="background:#7a3a9a"></span></td></tr>
+            <tr><td>gr</td><td>Grau</td><td>Grey</td><td><span class="wire-swatch" style="background:#888"></span></td></tr>
+            <tr><td>ws</td><td>Weiß</td><td>White</td><td><span class="wire-swatch" style="background:#e8e8e0;border-color:#888"></span></td></tr>
+            <tr><td>li</td><td>Lila</td><td>Lilac / Light purple</td><td><span class="wire-swatch" style="background:#b080c0"></span></td></tr>
+            <tr><td>rs</td><td>Rosa</td><td>Pink / Rose</td><td><span class="wire-swatch" style="background:#e080a0"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Common circuit conventions</div>
+        <table class="ref-table">
+          <thead><tr><th>Wire colour</th><th>Typical circuit</th></tr></thead>
+          <tbody>
+            <tr><td><span class="wire-swatch" style="background:#8b4a1a"></span> <code>br</code></td><td>Earth / chassis ground</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#cc2222"></span> <code>rt</code></td><td>+12V permanent (terminal 30)</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#1a1a1a;margin-right:2px"></span><span class="wire-swatch" style="background:#cc2222"></span> <code>sw/rt</code></td><td>+12V ignition switched (terminal 15)</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#1a1a1a;margin-right:2px"></span><span class="wire-swatch" style="background:#c8b030"></span> <code>sw/ge</code></td><td>+12V terminal 15 (alt convention)</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#1a1a1a"></span> <code>sw</code></td><td>Switched earth / output signal low</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#3a6aaa"></span> <code>bl</code></td><td>CAN-High (on some platforms)</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#d4cfc8;border-color:#888"></span> <code>ws/bl</code> or <code>ws/or</code></td><td>CAN-Low</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#d4701a"></span> <code>or/gn</code></td><td>CAN-High (MQB/MLB platform)</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#d4701a;margin-right:2px"></span><span class="wire-swatch" style="background:#8b4a1a"></span> <code>or/br</code></td><td>CAN-Low (MQB/MLB platform)</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#c8b030"></span> <code>ge</code></td><td>Airbag circuits (always yellow on VAG)</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#7a3a9a"></span> <code>vi</code></td><td>Diagnostic K-line / LIN bus</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#3a8c3a"></span> <code>gn</code></td><td>Sensor signal return / 5V reference</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Terminal voltage conventions</div>
+        <table class="ref-table">
+          <thead><tr><th>Terminal</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>30</td><td>+12V permanent (direct battery positive)</td></tr>
+            <tr><td>15</td><td>+12V ignition switched (via ignition switch)</td></tr>
+            <tr><td>15a</td><td>+12V switched, delayed off (radio, accessories)</td></tr>
+            <tr><td>X</td><td>+12V switched off with ignition key removed</td></tr>
+            <tr><td>31</td><td>Battery negative / chassis earth return</td></tr>
+            <tr><td>31b</td><td>Switched earth (switched to ground)</td></tr>
+            <tr><td>50</td><td>Starter trigger signal</td></tr>
+            <tr><td>D+</td><td>Alternator charge lamp / regulator signal</td></tr>
+            <tr><td>DF</td><td>Alternator field winding exciter</td></tr>
+            <tr><td>S</td><td>Alternator voltage sense</td></tr>
+            <tr><td>R</td><td>Radio / infotainment switched supply</td></tr>
+            <tr><td>58</td><td>Parking / tail light illumination feed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section class="ref-section">
+    <h2 class="ref-section-title">Tools</h2>
+    <p class="ref-section-desc">Correct tooling is critical — wrong tools damage terminals or housings. Each connector family requires specific crimp dies and terminal removal picks.</p>
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card-head">Crimp tools by terminal family</div>
+        <table class="ref-table">
+          <thead><tr><th>Terminal</th><th>VAG tool</th><th>Rennsteig</th><th>Aftermarket</th></tr></thead>
+          <tbody>
+            <tr><td>1.5mm (MT)</td><td>VW 1-1715</td><td>PEW 12 1.5</td><td>Engineer PA-09, IWISS IWS-2820M</td></tr>
+            <tr><td>2.8mm (JPT)</td><td>VW 1-1716</td><td>PEW 12 2.8</td><td>Engineer PA-09, IWISS IWS-2820M</td></tr>
+            <tr><td>4.8mm (SPT)</td><td>VW 1-1717</td><td>PEW 12 4.8</td><td>IWISS IWS-2820M (4.8mm die)</td></tr>
+            <tr><td>MQS 0.63mm</td><td>VW 1-1978</td><td>PEW 12 MQS</td><td>Engineer PA-20 (0.1–0.5mm²)</td></tr>
+            <tr><td>Bosch BDK/BSK 2.8mm</td><td>VW 1-1715B</td><td>PEW 12 BDK</td><td>IWISS IWS-2820M (Bosch die)</td></tr>
+            <tr><td>KOSTAL SLK 2.8mm</td><td>N/A</td><td>PEW 12 SLK</td><td>Engineer PA-09 (use 2.8mm die)</td></tr>
+            <tr><td>MCON 1.2mm</td><td>N/A</td><td>PEW 12 MCON</td><td>2-1579007-9 (TE tool)</td></tr>
+          </tbody>
+        </table>
+        <p class="ref-note">⚠ Always use the correct die — MQS requires PA-20 or equivalent micro die. Using PA-09 on MQS will destroy the terminal. The VAG tool numbers are VAG special service tools (SST); Rennsteig equivalents are the most common workshop alternative.</p>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Terminal removal / extraction picks</div>
+        <table class="ref-table">
+          <thead><tr><th>Terminal</th><th>VAG tool</th><th>Aftermarket</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>1.5mm (MT)</td><td>VAG 1332/11</td><td>Swaben CE-91 / CTA 1034</td><td>Depress locking lance from front</td></tr>
+            <tr><td>2.8mm (JPT)</td><td>VAG 1332/12</td><td>Swaben CE-92 / CTA 1034</td><td>Same motion — wider pick</td></tr>
+            <tr><td>4.8mm (SPT)</td><td>VAG 1332/13</td><td>CTA 1034</td><td>Depress locking lance</td></tr>
+            <tr><td>MQS 0.63mm</td><td>VAG 1332/7</td><td>Rennsteig 896 031 3</td><td>Very fine — use correct pick only</td></tr>
+            <tr><td>Superseal 1.5mm</td><td>N/A</td><td>Flat blade 0.8mm</td><td>Release secondary lock first</td></tr>
+            <tr><td>KOSTAL SLK 2.8mm</td><td>N/A</td><td>Fine flat blade</td><td>Depress housing latch from rear</td></tr>
+          </tbody>
+        </table>
+        <p class="ref-note">CTA 1034 is stocked by ECS Tuning and covers most push/pull VAG connectors. The VAG 1332 series is a set of interchangeable picks. Rennsteig 896 series is the precision alternative for MQS work.</p>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Connector release tools (housing)</div>
+        <table class="ref-table">
+          <thead><tr><th>Application</th><th>Tool</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Most push/pull VAG connectors</td><td>CTA 1034 (ECS ES# 4007099)</td><td>Wedge-style release for MAF, coils, headlights, sensors</td></tr>
+            <tr><td>Bosch Motronic ECU lever connectors</td><td>VAG 3748</td><td>Lever must be pulled before mating/unmating</td></tr>
+            <tr><td>Quadlock ISO radio</td><td>DIN radio removal keys (pair)</td><td>Standard DIN cage release keys</td></tr>
+            <tr><td>OBD-II DLC</td><td>No tool — friction fit</td><td>Press tab on top surface and pull</td></tr>
+            <tr><td>FAKRA coaxial</td><td>No tool — snap latch</td><td>Pinch sides and pull</td></tr>
+            <tr><td>MQS CPA lever</td><td>Fine flat blade</td><td>Slide CPA forward before pulling housing</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Seal insertion tools</div>
+        <table class="ref-table">
+          <thead><tr><th>Seal type</th><th>Tool / method</th></tr></thead>
+          <tbody>
+            <tr><td>1.5mm wire seals (3.9mm)</td><td>VAG 1978/2 or blunt probe — push seal onto wire before crimping terminal, then seat into cavity</td></tr>
+            <tr><td>2.8mm wire seals (5.6mm)</td><td>VAG 1978/3 or fingers — larger seal, easier to seat manually</td></tr>
+            <tr><td>4.8mm wire seals (9.0mm)</td><td>Push fit by hand — large enough to seat without tools</td></tr>
+            <tr><td>Superseal integral seals</td><td>No separate tool — seals are pre-installed in each cavity</td></tr>
+            <tr><td>Cavity plugs (unused cavities)</td><td>Push fit — 357972841 (2.8mm green) or 357972841 (1.5mm)</td></tr>
+          </tbody>
+        </table>
+        <p class="ref-note">Always slide the wire seal onto the wire before crimping the terminal. The seal should sit against the terminal insulation grip. Pushing a seal over a pre-crimped terminal will damage the seal.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Connector ID guide -->
+  <section class="ref-section">
+    <h2 class="ref-section-title">Connector Identification Guide</h2>
+    <p class="ref-section-desc">Not sure what connector you're looking at? Work through these steps to narrow it down.</p>
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-card-head">Step 1 — Count the pins &amp; measure pitch</div>
+        <table class="ref-table">
+          <thead><tr><th>Pin pitch</th><th>Terminal family</th><th>Typical application</th></tr></thead>
+          <tbody>
+            <tr><td>~2.0mm (very fine)</td><td>MQS 0.63mm</td><td>Instrument cluster, airbag sub-looms, data signals</td></tr>
+            <tr><td>~2.5mm (fine)</td><td>MCON 1.2 / MLK 1.2</td><td>MQB/MLB sensor sub-looms, body modules</td></tr>
+            <tr><td>~3.5mm</td><td>1.5mm Micro Timer</td><td>Most engine bay sensors — the most common VAG connector size</td></tr>
+            <tr><td>~5.0mm</td><td>2.8mm JPT / VW Tab / KOSTAL SLK</td><td>Solenoids, injectors (older), actuators, higher-current sensors</td></tr>
+            <tr><td>~7.5mm</td><td>4.8mm SPT</td><td>High-current: starter, fans, fuse box feeds</td></tr>
+            <tr><td>Coaxial</td><td>FAKRA / SMB</td><td>Antenna connections — GPS, DAB, video</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Step 2 — Identify the locking mechanism</div>
+        <table class="ref-table">
+          <thead><tr><th>Locking type</th><th>Likely family</th></tr></thead>
+          <tbody>
+            <tr><td>Side tab latch (press sideways)</td><td>Micro Timer, JPT, VW Tab, Econoseal</td></tr>
+            <tr><td>Sliding secondary lock (slides up from below)</td><td>Micro Timer II — distinctive feature</td></tr>
+            <tr><td>Rotating lever (pull lever to release)</td><td>Bosch Motronic ECU connectors (55/60-pin)</td></tr>
+            <tr><td>Quadlock lever (push to lock, pull to release)</td><td>MQS — blue or yellow CPA lever</td></tr>
+            <tr><td>Red secondary lock strip (slides across back)</td><td>AMP Superseal — always red on this family</td></tr>
+            <tr><td>No visible latch — friction fit only</td><td>OBD-II DLC, pre-OBD 2×2, coding plugs</td></tr>
+            <tr><td>Snap latch (squeeze sides)</td><td>FAKRA coaxial connectors</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Step 3 — Housing colour clues</div>
+        <table class="ref-table">
+          <thead><tr><th>Colour</th><th>What it often means</th></tr></thead>
+          <tbody>
+            <tr><td><span class="wire-swatch" style="background:#c8c820"></span> Yellow CPA lever</td><td>Airbag / SRS circuit — treat with caution, disconnect battery first</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#cc2222"></span> Red secondary lock</td><td>AMP Superseal 1.5 — IP67 sealed, outdoor/wheel arch application</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#c8b882"></span> Beige / tan housing</td><td>FAKRA code Z — GPS antenna</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#3a6aaa"></span> Blue housing / lever</td><td>FAKRA code B (DAB antenna) or MQS data line CPA</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#3a8c3a"></span> Green housing</td><td>Often Econoseal door loom (driver side) or Micro Timer variant</td></tr>
+            <tr><td><span class="wire-swatch" style="background:#8b4a1a"></span> Brown housing</td><td>Often Econoseal door loom (passenger side) or earth circuit connector</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">Step 4 — Pin shape</div>
+        <table class="ref-table">
+          <thead><tr><th>Pin profile</th><th>Terminal family</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Flat blade (rectangular cross-section)</td><td>Micro Timer 1.5mm, JPT 2.8mm, SPT 4.8mm</td><td>The vast majority of VAG connectors</td></tr>
+            <tr><td>Square cross-section (tiny)</td><td>MQS 0.63mm</td><td>Smaller than a matchstick head — needs magnification to confirm</td></tr>
+            <tr><td>Round / cylindrical</td><td>AMP Superseal, KOSTAL SLK, Bosch BAK</td><td>Sealed connectors tend to use round pins</td></tr>
+            <tr><td>Coaxial (centre pin + outer shield)</td><td>FAKRA, HSD</td><td>RF/antenna applications only</td></tr>
+            <tr><td>Blade fuse contact (wide flat blade)</td><td>ATO/Mini blade fuse tap</td><td>Fuse box — not a conventional connector</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>VAG Connector DB — community reference</span>
+    <span>·</span>
+    <span>Part numbers verified where possible; always cross-check against ETKA/ElsaWin</span>
+    <span>·</span>
+    <span>Manufacturers: TE Connectivity / AMP · KOSTAL · Bosch · Yazaki · Hirschmann</span>
+  </footer>
+
+</main>
 
 <div id="modal"></div>
 
@@ -6579,12 +6985,29 @@ function makeSVG(type){
   return templates[type] || templates['inline2'];
 }
 
+// ─── TAB SWITCHING ───────────────────────────────────────────────────────────
+function switchTab(tab, btn){
+  // Update buttons
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Show/hide panes
+  document.getElementById('tab-connectors').style.display = tab === 'connectors' ? '' : 'none';
+  document.getElementById('tab-reference').style.display  = tab === 'reference'   ? '' : 'none';
+  // Hide filter panel when switching to reference
+  if(tab === 'reference'){
+    document.getElementById('filterPanel').classList.remove('open');
+    document.getElementById('filterToggle').classList.remove('active');
+  }
+}
+
 // ─── FILTER PANEL / DRAWER ───────────────────────────────────────────────────
 const MOBILE_BP = 640;
 
 function isMobile(){ return window.innerWidth <= MOBILE_BP; }
 
 function toggleFilters(){
+  // Only relevant on the connectors tab
+  if(document.getElementById('tab-connectors').style.display === 'none') return;
   if(isMobile()){
     openDrawer();
   } else {
