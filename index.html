@@ -424,13 +424,35 @@
     background: var(--surface);
     padding: 1.25rem;
     cursor: pointer;
-    transition: background 0.12s;
+    transition: background 0.12s, box-shadow 0.12s;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    position: relative;
   }
 
   .card:hover { background: var(--surface2); }
+
+  .card:hover .card-details-hint { opacity: 1; }
+
+  .card-details-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    font-size: 10px;
+    font-family: var(--mono);
+    color: var(--accent);
+    opacity: 0.45;
+    transition: opacity .15s;
+    margin-top: auto;
+    letter-spacing: .04em;
+  }
+
+  .card-details-hint::after {
+    content: '→';
+    font-size: 11px;
+  }
 
   .card-header {
     display: flex;
@@ -9236,6 +9258,7 @@ function cardHTML(c){
         ${c.usage.slice(0,2).map(u=>`<span class="tag">${u}</span>`).join('')}
         ${c.usage.length>2?`<span class="family-badge">+${c.usage.length-2} more</span>`:''}
       </div>
+      <div class="card-details-hint">View full details</div>
     </div>`;
 }
 
