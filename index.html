@@ -358,6 +358,68 @@
     overflow: hidden;
   }
 
+  /* ── Function group sections ─────────────────────────── */
+  .func-group {
+    grid-column: 1 / -1; /* spans full width */
+    display: contents;   /* children participate in grid directly */
+  }
+
+  .func-group-header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 1.5rem;
+    background: var(--bg);
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--border);
+    transition: background .12s;
+  }
+
+  .func-group-header:hover { background: var(--surface); }
+
+  .func-group-chevron {
+    font-size: 12px;
+    color: var(--accent);
+    transition: transform .2s;
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+  }
+
+  .func-group-chevron.collapsed { transform: rotate(-90deg); }
+
+  .func-group-label {
+    font-size: 13px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .func-group-count {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--text3);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 1px 8px;
+    border-radius: 3px;
+    margin-left: auto;
+  }
+
+  .func-group-cards {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .func-group-cards.collapsed { display: none; }
+
   .card {
     background: var(--surface);
     padding: 1.25rem;
@@ -928,6 +990,7 @@
 
     main { padding: 0.75rem; }
     .grid { grid-template-columns: 1fr; gap: 1px; }
+    .func-group-cards { grid-template-columns: 1fr; }
     .card { padding: 1rem; }
     .card-name { font-size: 13px; }
     .card-diagram { height: 70px; min-height: 70px; }
@@ -9100,15 +9163,35 @@ function platformTagsHTML(platforms, max=6){
   return html;
 }
 
-function render(){
-  const filtered = getFiltered();
-  document.getElementById('shown').textContent = filtered.length;
-  const g = document.getElementById('grid');
-  if(!filtered.length){
-    g.innerHTML = '<div class="empty">// no connectors match — try a broader search</div>';
-    return;
-  }
-  g.innerHTML = filtered.map(c=>`
+// ─── FUNCTION GROUP ORDER ────────────────────────────────────────────────────
+const FUNC_ORDER = [
+  'Engine & Sensors','Ignition & Coils','Fuel & Injection','Lambda & Emissions',
+  'Cooling & HVAC','ABS & Brakes','Body & Interior','Lighting & Exterior',
+  'Audio & Infotainment','Diagnostics & ECU','Power & High-Current','Towing','Generic / Multi-use',
+];
+
+function getCollapseState(){
+  try{return JSON.parse(localStorage.getItem('vag-collapsed')||'{}');}catch(e){return {};}
+}
+function isGroupCollapsed(key){
+  const s=getCollapseState();
+  // If no saved state for this key, default to collapsed
+  return s[key]===undefined ? true : s[key];
+}
+function setCollapseState(key,collapsed){
+  try{const s=getCollapseState();s[key]=collapsed;localStorage.setItem('vag-collapsed',JSON.stringify(s));}catch(e){}
+}
+function toggleGroup(key){
+  const cards=document.getElementById('grp-cards-'+key);
+  const chev=document.getElementById('grp-chev-'+key);
+  if(!cards)return;
+  const nowCollapsed=cards.classList.toggle('collapsed');
+  chev.classList.toggle('collapsed',nowCollapsed);
+  setCollapseState(key,nowCollapsed);
+}
+
+function cardHTML(c){
+  return `
     <div class="card" onclick="openModal(${c.id})" role="button" aria-label="View ${c.name} details">
       <div class="card-header">
         <div>
@@ -9128,10 +9211,53 @@ function render(){
       <div class="platform-tags">${platformTagsHTML(c.platforms)}</div>
       <div class="card-tags">
         ${c.usage.slice(0,2).map(u=>`<span class="tag">${u}</span>`).join('')}
-        ${c.usage.length>2 ? `<span class="family-badge">+${c.usage.length-2} more</span>` : ''}
+        ${c.usage.length>2?`<span class="family-badge">+${c.usage.length-2} more</span>`:''}
       </div>
-    </div>
-  `).join('');
+    </div>`;
+}
+
+function render(){
+  const filtered=getFiltered();
+  document.getElementById('shown').textContent=filtered.length;
+  const g=document.getElementById('grid');
+  if(!filtered.length){
+    g.innerHTML='<div class="empty">// no connectors match — try a broader search</div>';
+    return;
+  }
+  // Use flat list when any filter/search is active
+  const isFiltered=document.getElementById('search').value.trim()||
+    document.getElementById('filterPins').value||
+    document.getElementById('filterFamily').value||
+    document.getElementById('filterMfr').value||
+    document.getElementById('filterColor').value||
+    document.getElementById('filterPlatform').value||
+    document.getElementById('filterFunc').value;
+  if(isFiltered){
+    g.innerHTML=filtered.map(c=>cardHTML(c)).join('');
+    return;
+  }
+  // Grouped view
+  const collapsed=getCollapseState();
+  const groups={};
+  FUNC_ORDER.forEach(f=>groups[f]=[]);
+  filtered.forEach(c=>{const f=c.func||'Generic / Multi-use';if(!groups[f])groups[f]=[];groups[f].push(c);});
+  let html='';
+  FUNC_ORDER.forEach(func=>{
+    const cards=groups[func];
+    if(!cards||!cards.length)return;
+    const key=func.replace(/[^a-zA-Z0-9]/g,'_');
+    const isCollapsed=isGroupCollapsed(key);
+    html+=`
+      <div class="func-group-header" onclick="toggleGroup('${key}')">
+        <span class="func-group-chevron${isCollapsed?' collapsed':''}" id="grp-chev-${key}">▾</span>
+        <span class="func-group-label">${func}</span>
+        <span class="func-group-count">${cards.length}</span>
+      </div>
+      <div class="func-group-cards${isCollapsed?' collapsed':''}" id="grp-cards-${key}">
+        ${cards.map(c=>cardHTML(c)).join('')}
+      </div>`;
+  });
+  g.innerHTML=html;
 }
 
 // Body scroll lock — iOS requires position:fixed trick
