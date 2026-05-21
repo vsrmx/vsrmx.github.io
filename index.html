@@ -1597,7 +1597,7 @@
   </section>
 
   <footer>
-    <span>VAG Connector DB — Community Reference</span>
+    <span>VAG Connector DB — community reference</span>
     <span>·</span>
     <span>Part numbers verified where possible; always cross-check against ETKA/ElsaWin</span>
     <span>·</span>
@@ -8962,25 +8962,25 @@ function makeSVG(type){
 }
 
 // ─── THEME ────────────────────────────────────────────────────────────────────
-function applyTheme(light){
+function applyTheme(light, rerender){
   document.documentElement.classList.toggle('light', light);
   const icon = document.getElementById('themeIcon');
   if(icon) icon.textContent = light ? '☾' : '☀';
   try { localStorage.setItem('vag-theme', light ? 'light' : 'dark'); } catch(e){}
-  // Re-render cards so SVG colours update
-  if(typeof render === 'function') render();
+  // Only re-render if explicitly requested (i.e. user toggled, not page init)
+  if(rerender && typeof render === 'function') render();
 }
 
 function toggleTheme(){
-  applyTheme(!document.documentElement.classList.contains('light'));
+  applyTheme(!document.documentElement.classList.contains('light'), true);
 }
 
-// Apply saved or system preference immediately
+// Apply saved or system preference immediately — no re-render, populateSelects handles first render
 (function(){
   let saved;
   try { saved = localStorage.getItem('vag-theme'); } catch(e){}
-  if(saved === 'light') applyTheme(true);
-  else if(!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme(true);
+  if(saved === 'light') applyTheme(true, false);
+  else if(!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme(true, false);
 })();
 
 // ─── TAB SWITCHING ───────────────────────────────────────────────────────────
