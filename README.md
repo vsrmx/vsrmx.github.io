@@ -499,29 +499,24 @@
     width: 100%;
     max-width: 640px;
     max-height: 90vh;
-    /* no overflow here — scroll is on modal-inner */
-    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     padding: 0;
-    display: flex;
-    flex-direction: column;
   }
 
   .modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     padding: 1.25rem 1.75rem 1rem;
     border-bottom: 1px solid var(--border);
-    flex-shrink: 0; /* never squish — always visible */
     background: var(--surface);
     border-radius: 10px 10px 0 0;
   }
 
   .modal-inner {
     padding: 1.25rem 1.75rem 1.75rem;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    flex: 1;
-    /* ensure scroll starts at top */
-    scroll-padding-top: 0;
   }
 
   .modal-top {
@@ -734,7 +729,7 @@
     .modal-overlay { padding: 0; align-items: flex-end; touch-action: none; }
     .modal { max-width: 100%; max-height: 92vh; border-radius: 12px 12px 0 0; border-bottom: none; }
     .modal-header { border-radius: 12px 12px 0 0; padding: 1rem 1rem 0.875rem; }
-    .modal-inner { padding: 1rem 1rem 1.5rem; }
+    .modal-inner { padding: 1rem; }
     .modal-title { font-size: 16px; }
     .detail-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .detail-item .dl { font-size: 9px; }
@@ -4200,8 +4195,7 @@ function openModal(id){
       </div>
     </div>
   </div>`;
-  const inner = document.querySelector('.modal-inner');
-  if(inner) inner.scrollTop = 0;
+  document.getElementById('modal').querySelector('.modal').scrollTop = 0;
   lockBodyScroll();
 }
 
