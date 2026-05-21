@@ -528,9 +528,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--border);
+    gap: 12px;
   }
 
   .modal-title { font-size: 18px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
