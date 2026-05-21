@@ -730,6 +730,16 @@
     color: var(--accent);
     border-color: rgba(200,181,96,0.2);
   }
+  .platform-tag.audi {
+    background: rgba(200,181,50,0.12);
+    color: #c8b432;
+    border-color: rgba(200,181,50,0.3);
+  }
+  :root.light .platform-tag.audi {
+    background: rgba(160,120,0,0.08);
+    color: #8a6800;
+    border-color: rgba(160,120,0,0.25);
+  }
 
   .ref-links { display: flex; flex-direction: column; gap: 5px; }
   .ref-link {
@@ -9161,11 +9171,17 @@ function getFiltered(){
   });
 }
 
+function platformClass(p){
+  if(p === 'All VAG') return ' all-vag';
+  if(/^(B\d|C\d|8L|8P|8V|MLB|D\d)/.test(p)) return ' audi';
+  return '';
+}
+
 function platformTagsHTML(platforms, max=6){
   if(!platforms||!platforms.length) return '';
   const shown = platforms.slice(0, max);
   const rest = platforms.length - max;
-  let html = shown.map(p=>`<span class="platform-tag${p==='All VAG'?' all-vag':''}">${p}</span>`).join('');
+  let html = shown.map(p=>`<span class="platform-tag${platformClass(p)}">${p}</span>`).join('');
   if(rest > 0) html += `<span class="platform-tag">+${rest}</span>`;
   return html;
 }
@@ -9295,7 +9311,7 @@ function openModal(id){
     : `<span style="background:rgba(200,181,96,0.08);border:1px solid rgba(200,181,96,0.2);color:#888;font-size:10px;font-family:monospace;padding:2px 7px;border-radius:3px;">unsealed</span>`;
 
   const platformsHTML = (c.platforms||[]).map(p=>
-    `<span class="platform-tag${p==='All VAG'?' all-vag':''}">${p}</span>`
+    `<span class="platform-tag${platformClass(p)}">${p}</span>`
   ).join('');
 
   m.innerHTML = `<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
