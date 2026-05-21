@@ -7,19 +7,19 @@
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
 
   :root {
-    --bg: #0f0f0f;
-    --surface: #1c1c1c;
-    --surface2: #272727;
-    --border: #333333;
-    --border2: #444444;
-    --text: #f0ede8;
-    --text2: #c8c4bc;
-    --text3: #8a8480;
-    --accent: #c8b560;
-    --accent2: #e8d070;
+    --bg: #0a0e1a;
+    --surface: #0f1628;
+    --surface2: #161e34;
+    --border: #1e2a42;
+    --border2: #2a3a58;
+    --text: #e8eef8;
+    --text2: #b8c4dc;
+    --text3: #6a7a9a;
+    --accent: #4a9fe8;
+    --accent2: #6ab8f8;
     --red: #e05a3a;
-    --blue: #5aa0d8;
-    --green: #5aaa78;
+    --blue: #4a9fe8;
+    --green: #4ac878;
     --font: 'IBM Plex Sans', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
   }
@@ -6872,10 +6872,10 @@ const connectors = [
 // ─── SVG GENERATORS ──────────────────────────────────────────────────────────
 function makeSVG(type){
   const light = document.documentElement.classList.contains('light');
-  const col    = light ? '#9a7e20' : '#c8b560';
-  const body   = light ? '#e8e4dc' : '#2a2a2a';
-  const pin_c  = light ? '#888480' : '#888';
-  const stroke = light ? '#b0aca4' : '#5a5550';
+  const col    = light ? '#c0281a' : '#4a9fe8';
+  const body   = light ? '#e8e4dc' : '#0f1628';
+  const pin_c  = light ? '#888480' : '#2a3a58';
+  const stroke = light ? '#b0aca4' : '#3a5070';
 
   const templates = {
     single: `<svg viewBox="0 8 80 36" xmlns="http://www.w3.org/2000/svg">
