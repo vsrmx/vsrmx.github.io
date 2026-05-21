@@ -506,12 +506,22 @@
     flex-direction: column;
   }
 
+  .modal-header {
+    padding: 1.25rem 1.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0; /* never squish — always visible */
+    background: var(--surface);
+    border-radius: 10px 10px 0 0;
+  }
+
   .modal-inner {
-    padding: 1.75rem;
+    padding: 1.25rem 1.75rem 1.75rem;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain; /* prevents scroll chaining to body */
+    overscroll-behavior: contain;
     flex: 1;
+    /* ensure scroll starts at top */
+    scroll-padding-top: 0;
   }
 
   .modal-top {
@@ -724,8 +734,9 @@
     .meta-item .mv { font-size: 11px; }
 
     .modal-overlay { padding: 0; align-items: flex-end; touch-action: none; }
-    .modal { max-width: 100%; max-height: 92vh; border-radius: 10px 10px 0 0; border-bottom: none; }
-    .modal-inner { padding: 1.25rem 1rem; }
+    .modal { max-width: 100%; max-height: 92vh; border-radius: 12px 12px 0 0; border-bottom: none; }
+    .modal-header { border-radius: 12px 12px 0 0; padding: 1rem 1rem 0.875rem; }
+    .modal-inner { padding: 1rem 1rem 1.5rem; }
     .modal-title { font-size: 16px; }
     .detail-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .detail-item .dl { font-size: 9px; }
@@ -4143,7 +4154,7 @@ function openModal(id){
   ).join('');
   m.innerHTML = `<div class="modal-overlay" onclick="closeModal(event)">
     <div class="modal" onclick="event.stopPropagation()">
-      <div class="modal-inner">
+      <div class="modal-header">
         <div class="modal-top">
           <div>
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
@@ -4154,6 +4165,8 @@ function openModal(id){
           </div>
           <button class="close-btn" onclick="dismissModal()">×</button>
         </div>
+      </div>
+      <div class="modal-inner">
         <div class="modal-diagram">${makeSVG(c.svgType)}</div>
         <div class="detail-grid">
           <div class="detail-item"><div class="dl">Family</div><div class="dv">${c.family}</div></div>
@@ -4189,6 +4202,8 @@ function openModal(id){
       </div>
     </div>
   </div>`;
+  const inner = document.querySelector('.modal-inner');
+  if(inner) inner.scrollTop = 0;
   lockBodyScroll();
 }
 
