@@ -486,6 +486,10 @@
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
+    /* prevent body scroll bleed-through on iOS */
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+    overflow: hidden;
   }
 
   .modal {
@@ -495,13 +499,20 @@
     width: 100%;
     max-width: 640px;
     max-height: 90vh;
-    overflow-y: auto;
+    /* no overflow here — scroll is on modal-inner */
+    overflow: hidden;
     padding: 0;
-    /* Smooth scroll on iOS */
-    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
   }
 
-  .modal-inner { padding: 1.75rem; }
+  .modal-inner {
+    padding: 1.75rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain; /* prevents scroll chaining to body */
+    flex: 1;
+  }
 
   .modal-top {
     display: flex;
@@ -712,7 +723,7 @@
     .meta-item .ml { font-size: 9px; }
     .meta-item .mv { font-size: 11px; }
 
-    .modal-overlay { padding: 0; align-items: flex-end; }
+    .modal-overlay { padding: 0; align-items: flex-end; touch-action: none; }
     .modal { max-width: 100%; max-height: 92vh; border-radius: 10px 10px 0 0; border-bottom: none; }
     .modal-inner { padding: 1.25rem 1rem; }
     .modal-title { font-size: 16px; }
@@ -4102,6 +4113,25 @@ function render(){
   `).join('');
 }
 
+// Body scroll lock — iOS requires position:fixed trick
+let scrollY = 0;
+function lockBodyScroll(){
+  scrollY = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.overflow = 'hidden';
+}
+function unlockBodyScroll(){
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.overflow = '';
+  window.scrollTo(0, scrollY);
+}
+
 function openModal(id){
   const c = connectors.find(x=>x.id===id);
   const m = document.getElementById('modal');
@@ -4122,7 +4152,7 @@ function openModal(id){
             </div>
             <div class="modal-pn">${c.partNumbers.join('  ·  ')}</div>
           </div>
-          <button class="close-btn" onclick="document.getElementById('modal').innerHTML=''">×</button>
+          <button class="close-btn" onclick="dismissModal()">×</button>
         </div>
         <div class="modal-diagram">${makeSVG(c.svgType)}</div>
         <div class="detail-grid">
@@ -4159,17 +4189,23 @@ function openModal(id){
       </div>
     </div>
   </div>`;
+  lockBodyScroll();
 }
 
-
+function dismissModal(){
+  document.getElementById('modal').innerHTML = '';
+  unlockBodyScroll();
+}
 
 function closeModal(e){
-  if(e.target.classList.contains('modal-overlay'))
-    document.getElementById('modal').innerHTML='';
+  if(e.target.classList.contains('modal-overlay')) dismissModal();
 }
 
 document.addEventListener('keydown', e=>{
-  if(e.key==='Escape') document.getElementById('modal').innerHTML='';
+  if(e.key==='Escape'){
+    if(document.getElementById('modal').innerHTML) dismissModal();
+    else closeDrawer();
+  }
 });
 
 populateSelects();
