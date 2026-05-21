@@ -985,6 +985,23 @@
 
   <!-- desktop filter panel (hidden until toggled) -->
   <div class="filter-panel" id="filterPanel">
+    <span class="filter-label">Function</span>
+    <select id="filterFunc" onchange="render(); updateFilterState()">
+      <option value="">All</option>
+      <option value="Engine &amp; Sensors">Engine &amp; Sensors</option>
+      <option value="Ignition &amp; Coils">Ignition &amp; Coils</option>
+      <option value="Fuel &amp; Injection">Fuel &amp; Injection</option>
+      <option value="Lambda &amp; Emissions">Lambda &amp; Emissions</option>
+      <option value="Cooling &amp; HVAC">Cooling &amp; HVAC</option>
+      <option value="ABS &amp; Brakes">ABS &amp; Brakes</option>
+      <option value="Body &amp; Interior">Body &amp; Interior</option>
+      <option value="Lighting &amp; Exterior">Lighting &amp; Exterior</option>
+      <option value="Audio &amp; Infotainment">Audio &amp; Infotainment</option>
+      <option value="Diagnostics &amp; ECU">Diagnostics &amp; ECU</option>
+      <option value="Power &amp; High-Current">Power &amp; High-Current</option>
+      <option value="Towing">Towing</option>
+      <option value="Generic / Multi-use">Generic / Multi-use</option>
+    </select>
     <span class="filter-label">Family</span>
     <select id="filterFamily" onchange="render(); updateFilterState()">
       <option value="">All</option>
@@ -1074,6 +1091,25 @@
       <button class="filter-drawer-close" onclick="closeDrawer()">×</button>
     </div>
     <div class="filter-drawer-body">
+      <div class="drawer-filter-row">
+        <span class="drawer-filter-label">Function</span>
+        <select class="drawer-select" id="drawerFunc" onchange="syncFromDrawer()">
+          <option value="">All functions</option>
+          <option value="Engine &amp; Sensors">Engine &amp; Sensors</option>
+          <option value="Ignition &amp; Coils">Ignition &amp; Coils</option>
+          <option value="Fuel &amp; Injection">Fuel &amp; Injection</option>
+          <option value="Lambda &amp; Emissions">Lambda &amp; Emissions</option>
+          <option value="Cooling &amp; HVAC">Cooling &amp; HVAC</option>
+          <option value="ABS &amp; Brakes">ABS &amp; Brakes</option>
+          <option value="Body &amp; Interior">Body &amp; Interior</option>
+          <option value="Lighting &amp; Exterior">Lighting &amp; Exterior</option>
+          <option value="Audio &amp; Infotainment">Audio &amp; Infotainment</option>
+          <option value="Diagnostics &amp; ECU">Diagnostics &amp; ECU</option>
+          <option value="Power &amp; High-Current">Power &amp; High-Current</option>
+          <option value="Towing">Towing</option>
+          <option value="Generic / Multi-use">Generic / Multi-use</option>
+        </select>
+      </div>
       <div class="drawer-filter-row">
         <span class="drawer-filter-label">Family</span>
         <select class="drawer-select" id="drawerFamily" onchange="syncFromDrawer()">
@@ -1575,7 +1611,8 @@ const connectors = [
       "8V",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 2,
@@ -1659,7 +1696,8 @@ const connectors = [
       "8V",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 3,
@@ -1743,7 +1781,8 @@ const connectors = [
       "8V",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 4,
@@ -1805,7 +1844,8 @@ const connectors = [
       "B8",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 5,
@@ -1877,7 +1917,8 @@ const connectors = [
       "B7",
       "B8"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 6,
@@ -1936,7 +1977,8 @@ const connectors = [
       "B7",
       "B8"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 7,
@@ -2002,7 +2044,8 @@ const connectors = [
       "B5",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 8,
@@ -2074,7 +2117,8 @@ const connectors = [
       "B4",
       "B5"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 9,
@@ -2129,7 +2173,8 @@ const connectors = [
       "B5",
       "B6"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 10,
@@ -2183,7 +2228,8 @@ const connectors = [
       "B4",
       "B5"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 11,
@@ -2247,7 +2293,8 @@ const connectors = [
       "B8",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Power & High-Current"
   },
   {
     "id": 12,
@@ -2326,7 +2373,8 @@ const connectors = [
       "MQB",
       "MLB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 13,
@@ -2396,7 +2444,8 @@ const connectors = [
       "B7",
       "B8"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 14,
@@ -2473,7 +2522,8 @@ const connectors = [
       "8L",
       "8P"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 15,
@@ -2525,7 +2575,8 @@ const connectors = [
       "B7",
       "B8"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 16,
@@ -2594,7 +2645,8 @@ const connectors = [
       "B7",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 17,
@@ -2656,7 +2708,8 @@ const connectors = [
       "B6",
       "B7"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 18,
@@ -2716,7 +2769,8 @@ const connectors = [
       "B6",
       "B7"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 19,
@@ -2770,7 +2824,8 @@ const connectors = [
       "B7",
       "B8"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 20,
@@ -2852,7 +2907,8 @@ const connectors = [
       "B6",
       "8L"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Body & Interior"
   },
   {
     "id": 21,
@@ -2923,7 +2979,8 @@ const connectors = [
       "B5",
       "8L"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Body & Interior"
   },
   {
     "id": 22,
@@ -2993,7 +3050,8 @@ const connectors = [
       "C5",
       "C6"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Body & Interior"
   },
   {
     "id": 23,
@@ -3053,7 +3111,8 @@ const connectors = [
       "B8",
       "8P"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Engine & Sensors"
   },
   {
     "id": 24,
@@ -3118,7 +3177,8 @@ const connectors = [
       "8V",
       "MQB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Engine & Sensors"
   },
   {
     "id": 25,
@@ -3173,7 +3233,8 @@ const connectors = [
       "B8",
       "8P"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Engine & Sensors"
   },
   {
     "id": 26,
@@ -3233,7 +3294,8 @@ const connectors = [
       "MQB",
       "MLB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 27,
@@ -3287,7 +3349,8 @@ const connectors = [
       "MQB",
       "MLB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 28,
@@ -3367,7 +3430,8 @@ const connectors = [
       "8V",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Audio & Infotainment"
   },
   {
     "id": 29,
@@ -3425,7 +3489,8 @@ const connectors = [
       "MQB",
       "MLB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Audio & Infotainment"
   },
   {
     "id": 30,
@@ -3481,7 +3546,8 @@ const connectors = [
       "8P",
       "8V"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Audio & Infotainment"
   },
   {
     "id": 31,
@@ -3535,7 +3601,8 @@ const connectors = [
       "B8",
       "B9"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Audio & Infotainment"
   },
   {
     "id": 32,
@@ -3598,7 +3665,8 @@ const connectors = [
       "B4",
       "B5"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Fuel & Injection"
   },
   {
     "id": 33,
@@ -3656,7 +3724,8 @@ const connectors = [
       "8P",
       "8V"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Fuel & Injection"
   },
   {
     "id": 34,
@@ -3722,7 +3791,8 @@ const connectors = [
       "8V",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 35,
@@ -3774,7 +3844,8 @@ const connectors = [
       "B3",
       "B4"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 36,
@@ -3834,7 +3905,8 @@ const connectors = [
       "B4",
       "B5"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 37,
@@ -3886,7 +3958,8 @@ const connectors = [
       "8L",
       "8P"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 38,
@@ -3937,7 +4010,8 @@ const connectors = [
       "B8",
       "8P"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 39,
@@ -3988,7 +4062,8 @@ const connectors = [
       "B2",
       "B3"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 40,
@@ -4054,7 +4129,8 @@ const connectors = [
       "B8",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 41,
@@ -4111,7 +4187,8 @@ const connectors = [
       "B9",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Power & High-Current"
   },
   {
     "id": 42,
@@ -4170,7 +4247,8 @@ const connectors = [
       "B6",
       "B7"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 43,
@@ -4226,7 +4304,8 @@ const connectors = [
       "8P",
       "MQB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 44,
@@ -4297,7 +4376,8 @@ const connectors = [
       "8P",
       "8V"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 45,
@@ -4349,7 +4429,8 @@ const connectors = [
       "Mk7",
       "Mk8"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Power & High-Current"
   },
   {
     "id": 46,
@@ -4400,7 +4481,8 @@ const connectors = [
       "B5",
       "8L"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 47,
@@ -4452,7 +4534,8 @@ const connectors = [
       "B4",
       "B5"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 48,
@@ -4512,7 +4595,8 @@ const connectors = [
       "8P",
       "Mk6"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 49,
@@ -4577,7 +4661,8 @@ const connectors = [
       "8V",
       "MQB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Ignition & Coils"
   },
   {
     "id": 50,
@@ -4637,7 +4722,8 @@ const connectors = [
       "MQB",
       "MLB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 51,
@@ -4690,7 +4776,8 @@ const connectors = [
       "MQB",
       "MLB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 52,
@@ -4750,7 +4837,8 @@ const connectors = [
       "8P",
       "8V"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 53,
@@ -4810,7 +4898,8 @@ const connectors = [
       "8P",
       "MQB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 54,
@@ -4866,7 +4955,8 @@ const connectors = [
       "MQB",
       "MLB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 55,
@@ -4933,7 +5023,8 @@ const connectors = [
       "B6",
       "B7"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Engine & Sensors"
   },
   {
     "id": 56,
@@ -4992,7 +5083,8 @@ const connectors = [
       "B4",
       "B5"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Engine & Sensors"
   },
   {
     "id": 57,
@@ -5062,7 +5154,8 @@ const connectors = [
       "8P",
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Lambda & Emissions"
   },
   {
     "id": 58,
@@ -5118,7 +5211,8 @@ const connectors = [
       "B7",
       "B8"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Lambda & Emissions"
   },
   {
     "id": 59,
@@ -5181,7 +5275,8 @@ const connectors = [
       "MQB",
       "MLB"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Lambda & Emissions"
   },
   {
     "id": 60,
@@ -5231,7 +5326,8 @@ const connectors = [
       "B1",
       "B2"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Fuel & Injection"
   },
   {
     "id": 61,
@@ -5284,7 +5380,8 @@ const connectors = [
       "B5",
       "B6"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 62,
@@ -5345,7 +5442,8 @@ const connectors = [
       "B5",
       "B6"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 63,
@@ -5409,7 +5507,8 @@ const connectors = [
     "platforms": [
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 64,
@@ -5466,7 +5565,8 @@ const connectors = [
     "platforms": [
       "All VAG"
     ],
-    "imageUrl": ""
+    "imageUrl": "",
+    "func": "Generic / Multi-use"
   },
   {
     "id": 65,
@@ -5533,7 +5633,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 66,
@@ -5593,7 +5694,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 67,
@@ -5653,7 +5755,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 68,
@@ -5710,7 +5813,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Ignition & Coils"
   },
   {
     "id": 69,
@@ -5771,7 +5875,8 @@ const connectors = [
         "l": "ECS Tuning: 4F0937731 flat connector housing",
         "u": "https://www.ecstuning.com/b-genuine-volkswagen-audi-parts/housing/4f0937731/"
       }
-    ]
+    ],
+    "func": "Power & High-Current"
   },
   {
     "id": 70,
@@ -5825,7 +5930,8 @@ const connectors = [
         "l": "ECS Tuning: 8K0973702-KIT with terminals",
         "u": "https://www.ecstuning.com/b-ecs-parts/8k0973702-kit/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 71,
@@ -5891,7 +5997,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 72,
@@ -5946,7 +6053,8 @@ const connectors = [
         "l": "ECS Tuning: 1J0973723G-KIT 3-pin kit",
         "u": "https://www.ecstuning.com/b-ecs-parts/1j0973723g-kit/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 73,
@@ -6005,7 +6113,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 74,
@@ -6058,7 +6167,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Fuel & Injection"
   },
   {
     "id": 75,
@@ -6121,7 +6231,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 76,
@@ -6186,7 +6297,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 77,
@@ -6244,7 +6356,8 @@ const connectors = [
         "l": "ECS Tuning: 000979034EA repair wire",
         "u": "https://www.ecstuning.com/b-genuine-volkswagen-audi-parts/repair-wire-priced-each/000979034ea/"
       }
-    ]
+    ],
+    "func": "Generic / Multi-use"
   },
   {
     "id": 78,
@@ -6313,7 +6426,8 @@ const connectors = [
         "l": "3waycomponents: VAG Superseal connector kits",
         "u": "https://3waycomponents.co.uk/1J0973802-VW-Audi-1.5mm-2-Way-Sealed-Male-JPT-Connector-Kit"
       }
-    ]
+    ],
+    "func": "ABS & Brakes"
   },
   {
     "id": 79,
@@ -6371,7 +6485,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Lambda & Emissions"
   },
   {
     "id": 80,
@@ -6430,7 +6545,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Power & High-Current"
   },
   {
     "id": 81,
@@ -6488,7 +6604,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 82,
@@ -6543,7 +6660,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 83,
@@ -6594,7 +6712,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Power & High-Current"
   },
   {
     "id": 84,
@@ -6645,7 +6764,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Power & High-Current"
   },
   {
     "id": 85,
@@ -6701,7 +6821,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Power & High-Current"
   },
   {
     "id": 86,
@@ -6752,7 +6873,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Power & High-Current"
   },
   {
     "id": 87,
@@ -6805,7 +6927,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 88,
@@ -6865,7 +6988,8 @@ const connectors = [
         "l": "VWVortex: Connector part number reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 89,
@@ -6934,7 +7058,8 @@ const connectors = [
         "l": "Amazon: 4F0973703 replacement pigtail",
         "u": "https://www.amazon.com/dp/B0D9GRDH5Z"
       }
-    ]
+    ],
+    "func": "Lighting & Exterior"
   },
   {
     "id": 90,
@@ -6988,7 +7113,8 @@ const connectors = [
         "l": "eBay: 1J0941165 12-pin xenon socket",
         "u": "https://www.ebay.de/itm/166318699699"
       }
-    ]
+    ],
+    "func": "Lighting & Exterior"
   },
   {
     "id": 91,
@@ -7041,7 +7167,8 @@ const connectors = [
         "l": "Pelican Parts: 6R0973735 headlight connector",
         "u": "https://www.pelicanparts.com/More_Info/6R0973735.htm?pn=6R0-973-735-VAG"
       }
-    ]
+    ],
+    "func": "Lighting & Exterior"
   },
   {
     "id": 92,
@@ -7095,7 +7222,8 @@ const connectors = [
         "l": "eBay: 1J0973705 5-pin connector kit (H2F)",
         "u": "https://www.ebay.de/itm/324723559878"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 93,
@@ -7146,7 +7274,8 @@ const connectors = [
         "l": "Amazon: PARSUPPRO 4H0973702A fuel pump connector",
         "u": "https://www.amazon.com/dp/B0FBHGY64R"
       }
-    ]
+    ],
+    "func": "Fuel & Injection"
   },
   {
     "id": 94,
@@ -7200,7 +7329,8 @@ const connectors = [
         "l": "034 Motorsport: ECU box code guide",
         "u": "https://www.034motorsport.com/checking-ecu-tcu-box-code-software-version-audi-volkswagen"
       }
-    ]
+    ],
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 95,
@@ -7260,7 +7390,8 @@ const connectors = [
         "l": "034 Motorsport: ECU box code identification guide",
         "u": "https://www.034motorsport.com/checking-ecu-tcu-box-code-software-version-audi-volkswagen"
       }
-    ]
+    ],
+    "func": "Diagnostics & ECU"
   },
   {
     "id": 96,
@@ -7311,7 +7442,8 @@ const connectors = [
         "l": "VWVortex: Connector part numbers reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 97,
@@ -7362,7 +7494,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 971 (engine wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 98,
@@ -7412,7 +7545,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 971 (engine wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 99,
@@ -7475,7 +7609,8 @@ const connectors = [
         "l": "VWVortex: Connector part numbers reference",
         "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 100,
@@ -7530,7 +7665,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 971 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Fuel & Injection"
   },
   {
     "id": 101,
@@ -7585,7 +7721,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 971 (engine wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 102,
@@ -7636,7 +7773,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 971 (engine wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Ignition & Coils"
   },
   {
     "id": 103,
@@ -7688,7 +7826,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 971 (engine wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Ignition & Coils"
   },
   {
     "id": 104,
@@ -7737,7 +7876,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Body & Interior"
   },
   {
     "id": 105,
@@ -7799,7 +7939,8 @@ const connectors = [
         "l": "Corsa-Technic: Econoseal III Series",
         "u": "https://www.corsa-technic.com/category.php?category_id=355"
       }
-    ]
+    ],
+    "func": "Lighting & Exterior"
   },
   {
     "id": 106,
@@ -7850,7 +7991,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Lighting & Exterior"
   },
   {
     "id": 107,
@@ -7906,7 +8048,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 108,
@@ -7957,7 +8100,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 109,
@@ -8006,7 +8150,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 110,
@@ -8056,7 +8201,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body/comfort wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 111,
@@ -8106,7 +8252,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body/comfort wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 112,
@@ -8155,7 +8302,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Body & Interior"
   },
   {
     "id": 113,
@@ -8204,7 +8352,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Body & Interior"
   },
   {
     "id": 114,
@@ -8253,7 +8402,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Body & Interior"
   },
   {
     "id": 115,
@@ -8309,7 +8459,8 @@ const connectors = [
         "l": "Corsa-Technic: Econoseal III",
         "u": "https://www.corsa-technic.com/category.php?category_id=355"
       }
-    ]
+    ],
+    "func": "ABS & Brakes"
   },
   {
     "id": 116,
@@ -8362,7 +8513,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 971 (engine wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Engine & Sensors"
   },
   {
     "id": 117,
@@ -8414,7 +8566,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 971 (engine wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Cooling & HVAC"
   },
   {
     "id": 118,
@@ -8470,7 +8623,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Towing"
   },
   {
     "id": 119,
@@ -8521,7 +8675,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (body wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Towing"
   },
   {
     "id": 120,
@@ -8573,7 +8728,8 @@ const connectors = [
         "l": "ETKA Mk4 Group 972 (interior wiring)",
         "u": "https://vsrmx.github.io/"
       }
-    ]
+    ],
+    "func": "Body & Interior"
   }
 ];
 
@@ -8815,15 +8971,16 @@ function syncFromDrawer(){
   document.getElementById('filterMfr').value      = document.getElementById('drawerMfr').value;
   document.getElementById('filterColor').value    = document.getElementById('drawerColor').value;
   document.getElementById('filterPlatform').value = document.getElementById('drawerPlatform').value;
+  document.getElementById('filterFunc').value     = document.getElementById('drawerFunc').value;
   render();
   updateFilterState();
 }
 
 function clearFilters(){
-  ['filterFamily','filterPins','filterMfr','filterColor','filterPlatform'].forEach(id => {
+  ['filterFamily','filterPins','filterMfr','filterColor','filterPlatform','filterFunc'].forEach(id => {
     document.getElementById(id).value = '';
   });
-  ['drawerFamily','drawerPins','drawerMfr','drawerColor','drawerPlatform'].forEach(id => {
+  ['drawerFamily','drawerPins','drawerMfr','drawerColor','drawerPlatform','drawerFunc'].forEach(id => {
     document.getElementById(id).value = '';
   });
   render();
@@ -8831,7 +8988,7 @@ function clearFilters(){
 }
 
 function updateFilterState(){
-  const active = ['filterFamily','filterPins','filterMfr','filterColor','filterPlatform']
+  const active = ['filterFamily','filterPins','filterMfr','filterColor','filterPlatform','filterFunc']
     .some(id => document.getElementById(id).value !== '');
   const btn = document.getElementById('filterToggle');
   btn.classList.toggle('has-filters', active);
@@ -8907,12 +9064,13 @@ function modalColourChips(colors){
 }
 
 function getFiltered(){
-  const q = document.getElementById('search').value.toLowerCase().trim();
-  const fp = document.getElementById('filterPins').value;
-  const ff = document.getElementById('filterFamily').value;
-  const fm = document.getElementById('filterMfr').value;
-  const fc = document.getElementById('filterColor').value;
+  const q   = document.getElementById('search').value.toLowerCase().trim();
+  const fp  = document.getElementById('filterPins').value;
+  const ff  = document.getElementById('filterFamily').value;
+  const fm  = document.getElementById('filterMfr').value;
+  const fc  = document.getElementById('filterColor').value;
   const fpl = document.getElementById('filterPlatform').value;
+  const fn  = document.getElementById('filterFunc').value;
   return connectors.filter(c=>{
     const matchQ = !q || c.name.toLowerCase().includes(q)
       || c.partNumbers.join(' ').toLowerCase().includes(q)
@@ -8921,13 +9079,15 @@ function getFiltered(){
       || c.manufacturer.toLowerCase().includes(q)
       || c.notes.toLowerCase().includes(q)
       || (c.colors||[]).map(x=>x.name+' '+x.ctx).join(' ').toLowerCase().includes(q)
-      || (c.platforms||[]).join(' ').toLowerCase().includes(q.toLowerCase());
-    const matchP = !fp || (fp==='10' ? c.pins>=10 : c.pins===parseInt(fp));
-    const matchF = !ff || c.family===ff;
-    const matchM = !fm || c.manufacturer===fm;
-    const matchC = connectorMatchesColor(c, fc);
+      || (c.platforms||[]).join(' ').toLowerCase().includes(q)
+      || (c.func||'').toLowerCase().includes(q);
+    const matchP  = !fp || (fp==='10' ? c.pins>=10 : c.pins===parseInt(fp));
+    const matchF  = !ff || c.family===ff;
+    const matchM  = !fm || c.manufacturer===fm;
+    const matchC  = connectorMatchesColor(c, fc);
     const matchPl = !fpl || (c.platforms||[]).includes(fpl);
-    return matchQ && matchP && matchF && matchM && matchC && matchPl;
+    const matchFn = !fn  || c.func===fn;
+    return matchQ && matchP && matchF && matchM && matchC && matchPl && matchFn;
   });
 }
 
