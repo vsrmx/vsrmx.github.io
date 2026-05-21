@@ -482,14 +482,11 @@
     inset: 0;
     background: rgba(0,0,0,.75);
     z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    /* prevent body scroll bleed-through on iOS */
-    touch-action: none;
-    -webkit-overflow-scrolling: none;
-    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 2rem 1rem 1rem;
+    /* iOS: prevent body scroll bleed */
+    touch-action: pan-y;
   }
 
   .modal {
@@ -498,72 +495,45 @@
     border-radius: 10px;
     width: 100%;
     max-width: 640px;
-    max-height: 90vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    margin: 0 auto;
     padding: 0;
+    /* no overflow on modal itself — overlay scrolls */
   }
 
-  .modal-header {
-    padding: 1.25rem 1.75rem 1rem;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: 10px 10px 0 0;
-  }
-
-  .modal-inner {
-    padding: 1.25rem 1.75rem 1.75rem;
-  }
-
-  /* Close button floats over the modal — never scrolls away */
-  .modal-close-float {
-    position: fixed;
-    z-index: 201;
-    top: auto; /* set by JS */
-    right: auto; /* set by JS */
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--surface2);
-    border: 1px solid var(--border2);
-    color: var(--text2);
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,.4);
-    transition: background .12s, color .12s;
-  }
-  .modal-close-float:hover { background: var(--border2); color: var(--text); }
-
-  .modal-top {
+  .modal-head {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 12px;
+    padding: 1.25rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
   }
+
+  .modal-body {
+    padding: 1.25rem 1.5rem 1.75rem;
+  }
+
+  .modal-close {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text2);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .12s, color .12s;
+  }
+  .modal-close:hover { border-color: var(--border2); color: var(--text); }
 
   .modal-title { font-size: 18px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
   .modal-pn { font-size: 12px; font-family: var(--mono); color: var(--text3); margin-top: 4px; }
 
-  .close-btn {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text2);
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: border-color 0.12s, color 0.12s;
-  }
-  .close-btn:hover { border-color: var(--border2); color: var(--text); }
+  /* modal-close is defined in modal section above */
 
   .modal-diagram {
     background: var(--bg);
@@ -745,10 +715,10 @@
     .meta-item .ml { font-size: 9px; }
     .meta-item .mv { font-size: 11px; }
 
-    .modal-overlay { padding: 0; align-items: flex-end; touch-action: none; }
-    .modal { max-width: 100%; max-height: 92vh; border-radius: 12px 12px 0 0; border-bottom: none; }
-    .modal-header { border-radius: 12px 12px 0 0; padding: 1rem 1rem 0.875rem; }
-    .modal-inner { padding: 1rem; }
+    .modal-overlay { padding: 0.75rem 0 0; }
+    .modal { border-radius: 12px 12px 0 0; border-bottom: none; margin-bottom: 0; }
+    .modal-head { padding: 1rem; }
+    .modal-body { padding: 1rem; }
     .modal-title { font-size: 16px; }
     .detail-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .detail-item .dl { font-size: 9px; }
@@ -4158,26 +4128,28 @@ function unlockBodyScroll(){
 function openModal(id){
   const c = connectors.find(x=>x.id===id);
   const m = document.getElementById('modal');
+
   const sealedBadge = c.sealed
     ? `<span style="background:rgba(90,170,120,0.15);border:1px solid rgba(90,170,120,0.35);color:#5aaa78;font-size:10px;font-family:monospace;padding:2px 7px;border-radius:3px;">IP-rated sealed</span>`
     : `<span style="background:rgba(200,181,96,0.08);border:1px solid rgba(200,181,96,0.2);color:#888;font-size:10px;font-family:monospace;padding:2px 7px;border-radius:3px;">unsealed</span>`;
+
   const platformsHTML = (c.platforms||[]).map(p=>
     `<span class="platform-tag${p==='All VAG'?' all-vag':''}">${p}</span>`
   ).join('');
-  m.innerHTML = `<div class="modal-overlay" onclick="closeModal(event)">
-    <div class="modal" id="modalBox" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <div class="modal-top">
-          <div>
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-              <span class="modal-title">${c.name}</span>
-              ${sealedBadge}
-            </div>
-            <div class="modal-pn">${c.partNumbers.join('  ·  ')}</div>
+
+  m.innerHTML = `<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span class="modal-title">${c.name}</span>
+            ${sealedBadge}
           </div>
+          <div class="modal-pn">${c.partNumbers.join('  ·  ')}</div>
         </div>
+        <button class="modal-close" onclick="dismissModal()" aria-label="Close">×</button>
       </div>
-      <div class="modal-inner">
+      <div class="modal-body">
         <div class="modal-diagram">${makeSVG(c.svgType)}</div>
         <div class="detail-grid">
           <div class="detail-item"><div class="dl">Family</div><div class="dv">${c.family}</div></div>
@@ -4213,21 +4185,7 @@ function openModal(id){
       </div>
     </div>
   </div>`;
-  // Position floating close button at top-right corner of the modal box
-  requestAnimationFrame(() => {
-    const box = document.getElementById('modalBox');
-    if (!box) return;
-    const rect = box.getBoundingClientRect();
-    const btn = document.createElement('button');
-    btn.className = 'modal-close-float';
-    btn.innerHTML = '×';
-    btn.setAttribute('aria-label', 'Close');
-    btn.style.top = (rect.top + 10) + 'px';
-    btn.style.right = (window.innerWidth - rect.right + 10) + 'px';
-    btn.onclick = dismissModal;
-    document.getElementById('modal').appendChild(btn);
-    box.scrollTop = 0;
-  });
+
   lockBodyScroll();
 }
 
@@ -4237,7 +4195,7 @@ function dismissModal(){
 }
 
 function closeModal(e){
-  if(e.target.classList.contains('modal-overlay')) dismissModal();
+  if(e.target.id === 'modalOverlay') dismissModal();
 }
 
 document.addEventListener('keydown', e=>{
