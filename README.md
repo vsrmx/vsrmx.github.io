@@ -784,7 +784,7 @@
   }
 
   .ref-card {
-    background: var(--surface);
+    background: var(--bg);
     padding: 1.25rem;
   }
 
@@ -803,6 +803,7 @@
     font-size: 12px;
     font-family: var(--mono);
     color: var(--text2);
+    background: transparent;
   }
 
   .ref-table th {
@@ -814,6 +815,7 @@
     padding: 0 8px 6px 0;
     border-bottom: 1px solid var(--border);
     font-weight: 400;
+    background: transparent;
   }
 
   .ref-table td {
@@ -821,6 +823,7 @@
     border-bottom: 1px solid var(--border);
     vertical-align: middle;
     color: var(--text2);
+    background: transparent;
   }
 
   .ref-table tr:last-child td { border-bottom: none; }
