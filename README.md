@@ -506,9 +506,6 @@
   }
 
   .modal-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
     padding: 1.25rem 1.75rem 1rem;
     border-bottom: 1px solid var(--border);
     background: var(--surface);
@@ -518,6 +515,28 @@
   .modal-inner {
     padding: 1.25rem 1.75rem 1.75rem;
   }
+
+  /* Close button floats over the modal — never scrolls away */
+  .modal-close-float {
+    position: fixed;
+    z-index: 201;
+    top: auto; /* set by JS */
+    right: auto; /* set by JS */
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    color: var(--text2);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    transition: background .12s, color .12s;
+  }
+  .modal-close-float:hover { background: var(--border2); color: var(--text); }
 
   .modal-top {
     display: flex;
@@ -4146,7 +4165,7 @@ function openModal(id){
     `<span class="platform-tag${p==='All VAG'?' all-vag':''}">${p}</span>`
   ).join('');
   m.innerHTML = `<div class="modal-overlay" onclick="closeModal(event)">
-    <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal" id="modalBox" onclick="event.stopPropagation()">
       <div class="modal-header">
         <div class="modal-top">
           <div>
@@ -4156,7 +4175,6 @@ function openModal(id){
             </div>
             <div class="modal-pn">${c.partNumbers.join('  ·  ')}</div>
           </div>
-          <button class="close-btn" onclick="dismissModal()">×</button>
         </div>
       </div>
       <div class="modal-inner">
@@ -4195,7 +4213,21 @@ function openModal(id){
       </div>
     </div>
   </div>`;
-  document.getElementById('modal').querySelector('.modal').scrollTop = 0;
+  // Position floating close button at top-right corner of the modal box
+  requestAnimationFrame(() => {
+    const box = document.getElementById('modalBox');
+    if (!box) return;
+    const rect = box.getBoundingClientRect();
+    const btn = document.createElement('button');
+    btn.className = 'modal-close-float';
+    btn.innerHTML = '×';
+    btn.setAttribute('aria-label', 'Close');
+    btn.style.top = (rect.top + 10) + 'px';
+    btn.style.right = (window.innerWidth - rect.right + 10) + 'px';
+    btn.onclick = dismissModal;
+    document.getElementById('modal').appendChild(btn);
+    box.scrollTop = 0;
+  });
   lockBodyScroll();
 }
 
