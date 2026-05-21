@@ -8,20 +8,37 @@
 
   :root {
     --bg: #0f0f0f;
-    --surface: #181818;
-    --surface2: #222222;
-    --border: #2e2e2e;
-    --border2: #3a3a3a;
-    --text: #e8e6e1;
-    --text2: #a0998f;
-    --text3: #5a5550;
+    --surface: #1c1c1c;
+    --surface2: #272727;
+    --border: #333333;
+    --border2: #444444;
+    --text: #f0ede8;
+    --text2: #c8c4bc;
+    --text3: #8a8480;
     --accent: #c8b560;
     --accent2: #e8d070;
     --red: #e05a3a;
-    --blue: #4a8fc8;
+    --blue: #5aa0d8;
     --green: #5aaa78;
     --font: 'IBM Plex Sans', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
+  }
+
+  /* ── Light theme ──────────────────────────────────────── */
+  :root.light {
+    --bg: #ffffff;
+    --surface: #f4f2ef;
+    --surface2: #e8e5e0;
+    --border: #d0ccc6;
+    --border2: #b8b4ae;
+    --text: #0a0a0a;
+    --text2: #2a2826;
+    --text3: #5a5652;
+    --accent: #c0281a;
+    --accent2: #a01808;
+    --red: #b02810;
+    --blue: #0a5a9a;
+    --green: #1a6a38;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -416,7 +433,7 @@
   }
 
   .meta-item .ml { font-size: 10px; color: var(--text3); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; }
-  .meta-item .mv { font-size: 12px; color: var(--text2); margin-top: 1px; }
+  .meta-item .mv { font-size: 12px; color: var(--text); margin-top: 1px; }
 
   .card-tags {
     display: flex;
@@ -710,6 +727,24 @@
   footer a { color: var(--text3); text-decoration: none; }
   footer a:hover { color: var(--accent); }
 
+  .theme-toggle {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text2);
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .15s, color .15s, background .15s;
+    line-height: 1;
+  }
+  .theme-toggle:hover { border-color: var(--border2); color: var(--accent); }
+
   /* ── Tab navigation ──────────────────────────────────── */
   .tab-nav {
     display: flex;
@@ -943,6 +978,9 @@
     <span class="stats-pill">
       <span class="count" id="shown">0</span>/<span class="count" id="total">0</span>
     </span>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+      <span id="themeIcon">☀</span>
+    </button>
   </div>
 
   <!-- desktop filter panel (hidden until toggled) -->
@@ -6833,10 +6871,11 @@ const connectors = [
 
 // ─── SVG GENERATORS ──────────────────────────────────────────────────────────
 function makeSVG(type){
-  const col = '#c8b560';
-  const body = '#2a2a2a';
-  const pin_c = '#888';
-  const stroke = '#5a5550';
+  const light = document.documentElement.classList.contains('light');
+  const col    = light ? '#9a7e20' : '#c8b560';
+  const body   = light ? '#e8e4dc' : '#2a2a2a';
+  const pin_c  = light ? '#888480' : '#888';
+  const stroke = light ? '#b0aca4' : '#5a5550';
 
   const templates = {
     single: `<svg viewBox="0 8 80 36" xmlns="http://www.w3.org/2000/svg">
@@ -6987,6 +7026,28 @@ function makeSVG(type){
   };
   return templates[type] || templates['inline2'];
 }
+
+// ─── THEME ────────────────────────────────────────────────────────────────────
+function applyTheme(light){
+  document.documentElement.classList.toggle('light', light);
+  const icon = document.getElementById('themeIcon');
+  if(icon) icon.textContent = light ? '☾' : '☀';
+  try { localStorage.setItem('vag-theme', light ? 'light' : 'dark'); } catch(e){}
+  // Re-render cards so SVG colours update
+  if(typeof render === 'function') render();
+}
+
+function toggleTheme(){
+  applyTheme(!document.documentElement.classList.contains('light'));
+}
+
+// Apply saved or system preference immediately
+(function(){
+  let saved;
+  try { saved = localStorage.getItem('vag-theme'); } catch(e){}
+  if(saved === 'light') applyTheme(true);
+  else if(!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme(true);
+})();
 
 // ─── TAB SWITCHING ───────────────────────────────────────────────────────────
 function switchTab(tab, btn){
