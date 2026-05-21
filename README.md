@@ -982,6 +982,77 @@
   <span>Manufacturers: TE Connectivity / AMP · KOSTAL · Bosch · Yazaki · Hirschmann</span>
 </footer>
 
+<section id="terminal-ref" style="max-width:1400px;margin:0 auto;padding:0 2.5rem 3rem;">
+  <div style="border-top:1px solid var(--border);padding-top:2rem;">
+    <div style="font-size:11px;font-family:var(--mono);color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;">Terminal & wire seal reference — sourced from VWVortex thread #6948714</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
+
+      <div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem;">1.5mm TERMINALS (Micro Timer / female)</div>
+        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10335706</td><td>0.35–0.5mm² · Tyco 969019-2 (tin) / 969019-3 (gold)</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10335807</td><td>0.5–1.0mm² · Tyco 964275-2 (tin) / 964275-3 (gold)</td></tr>
+        </table>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin:.75rem 0 .5rem;">1.5mm TERMINALS (male)</div>
+        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10336005</td><td>0.35–0.5mm² · Tyco 969029-2 / 969029-3</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10336105</td><td>0.5–1.0mm² · Tyco 964270-2 / 964270-3</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem;">2.8mm TERMINALS (JPT / female)</div>
+        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90684307</td><td>0.35–0.5mm² · Tyco 964281-2 / 964281-4</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90684405</td><td>0.5–1.0mm² · Tyco 964285-2 / 964285-4</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90684505</td><td>1.5–2.5mm² · Tyco 964287-2 / 964287-5</td></tr>
+        </table>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin:.75rem 0 .5rem;">2.8mm TERMINALS (male)</div>
+        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10318905</td><td>0.5–1.0mm² · Tyco 2-964299-1 / 1-964299-3</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10319005</td><td>1.5–2.5mm² · Tyco 2-964301-1 / 1-964301-3</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem;">4.8mm TERMINALS (SPT)</div>
+        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10319103</td><td>0.5–1.0mm² male · Tyco 964309-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10319203</td><td>1.5–2.5mm² male · Tyco 964311-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 10319303</td><td>4.0mm² male · Tyco 964313-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90732603</td><td>0.5–1.0mm² female · Tyco 969041-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90732703</td><td>1.5–2.5mm² female · Tyco 969043-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">N 90696603</td><td>4.0mm² female · Tyco 969045-1</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin-bottom:.5rem;">WIRE SEALS — 1.5mm (3.9×7.8mm)</div>
+        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972740D</td><td>grey · 0.5–0.75mm² · Tyco 963530-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972740E</td><td>red · 0.35–0.5mm² · Tyco 964971-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972740F</td><td>yellow · 1.0mm² · Tyco 964972-1</td></tr>
+        </table>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin:.75rem 0 .5rem;">WIRE SEALS — 2.8mm (5.6×7.8mm)</div>
+        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972741</td><td>blue · 0.35–1.0mm² · Tyco 963294-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972741A</td><td>red · 1.5mm² · Tyco 963293-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972741B</td><td>yellow · 1.5–2.5mm² · Tyco 963292-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972841</td><td>green · cavity plug · Tyco 828922-1</td></tr>
+        </table>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--accent);margin:.75rem 0 .5rem;">WIRE SEALS — 4.8mm (9.0×7.8mm)</div>
+        <table style="width:100%;font-size:11px;font-family:var(--mono);color:var(--text3);border-collapse:collapse;">
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972742A</td><td>white · 0.5–1.0mm² · Tyco 963243-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972742B</td><td>red · 1.5–2.5mm² · Tyco 963244-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972742E</td><td>blue · 2.5–4.0mm² · Tyco 963245-1</td></tr>
+          <tr><td style="padding:2px 8px 2px 0;color:var(--text2);">357972842</td><td>black · cavity plug · Tyco 100132-1</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <div id="modal"></div>
 
 <script>
@@ -3841,7 +3912,6 @@ const connectors = [
     "pins": 4,
     "layout": "2×2",
     "partNumbers": [
-      "1J0 973 724",
       "42034400"
     ],
     "tyco": [
@@ -3893,7 +3963,6 @@ const connectors = [
     "pins": 6,
     "layout": "2×3",
     "partNumbers": [
-      "1J0 973 733",
       "42034100"
     ],
     "tyco": [
@@ -5796,6 +5865,558 @@ const connectors = [
       {
         "l": "3waycomponents: VAG Superseal connector kits",
         "u": "https://3waycomponents.co.uk/1J0973802-VW-Audi-1.5mm-2-Way-Sealed-Male-JPT-Connector-Kit"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "name": "1J0 973 733 — Lambda probe pre-cat (G39)",
+    "family": "FEP 2.8 Sealed",
+    "manufacturer": "FEP / OEM VAG",
+    "pins": 4,
+    "layout": "2×2",
+    "partNumbers": [
+      "1J0 973 733"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm FEP",
+    "gaugeRange": "0.5–1.5 mm²",
+    "locking": "Side tab",
+    "sealed": true,
+    "terminals": [
+      "JPTA.SWS-SKT",
+      "JPTA.SWS-PIN2"
+    ],
+    "seals": [
+      "JPTA-SL"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard connector"
+      },
+      {
+        "hex": "#8b4a1a",
+        "name": "Brown",
+        "ctx": "Some variants — pre-cat sensor position coding"
+      }
+    ],
+    "usage": [
+      "G39 — lambda probe, pre-catalytic converter (narrowband front O2 sensor)",
+      "Narrowband heated O2 sensor on 1.8T, 2.0T, VR6 Mk3/Mk4 era"
+    ],
+    "notes": "VWVortex thread confirms 1J0973733 as the G39 pre-cat lambda connector. 4-pin because the sensor is heated (2 heater wires + signal + earth). Distinct from the Bosch BAK 6-pin used on wideband LSU sensors. The pre-cat G39 narrowband uses this FEP 2.8 4-pin; the post-cat G130 uses 1J0973724.",
+    "svgType": "grid22",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "1J0 973 772 — Alternator connector (3-pin)",
+    "family": "VW 2.8 Tab",
+    "manufacturer": "VAG proprietary (OEM)",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1J0 973 772"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm VAG Tab",
+    "gaugeRange": "0.5–2.5 mm²",
+    "locking": "Tab latch",
+    "sealed": false,
+    "terminals": [
+      "JPTA.SWS-SKT",
+      "JPTA.SWS-PIN2"
+    ],
+    "seals": [
+      "N/A — unsealed"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard"
+      },
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Some variants"
+      }
+    ],
+    "usage": [
+      "Alternator regulator/exciter connector — all 1.8T, TDI, VR6 and 2.0 8V engines Mk4 era",
+      "3 circuits: exciter signal, charge lamp, and sense voltage"
+    ],
+    "notes": "VWVortex thread specifically lists 1J0973772 as the alternator connector. 3-pin 2.8mm unsealed — located in the dry(ish) zone near the alternator body. Pin 1 = D+ (charge warning lamp), Pin 2 = DF (field/exciter), Pin 3 = voltage sense. Failure causes charging system warning light or battery drain.",
+    "svgType": "inline3",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "B4",
+      "B5",
+      "B6",
+      "8L"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "1J0 973 775A — MAF sensor 5-pin (G70)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 5,
+    "layout": "1×5 inline",
+    "partNumbers": [
+      "1J0 973 775A",
+      "1J0 973 999A"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch with secondary lock",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "G70 — Mass air flow (MAF) sensor, all 1.8T, VR6 and later 2.0T engines",
+      "5 circuits: supply +12V, earth, signal, intake air temperature (IAT), heater element"
+    ],
+    "notes": "VWVortex thread lists both 1J0973775A and 1J0973999A as equivalent G70 MAF sensor connectors. The 5-pin combines MAF signal with integrated IAT sensor signal — the hot-film MAF element, IAT thermistor, heater power, and two earth circuits. 1J0973999A is a later superseding part number.",
+    "svgType": "inline5",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "Mk6",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "8L",
+      "8P"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "1J0 973 822 — A/C compressor clutch (N25, male)",
+    "family": "VW 2.8 Tab",
+    "manufacturer": "VAG proprietary (OEM)",
+    "pins": 2,
+    "layout": "1×2 inline",
+    "partNumbers": [
+      "1J0 973 822"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm VAG Tab",
+    "gaugeRange": "0.5–1.5 mm²",
+    "locking": "Tab latch",
+    "sealed": false,
+    "terminals": [
+      "JPTA.SWS-SKT",
+      "JPTA.SWS-PIN2"
+    ],
+    "seals": [
+      "N/A — unsealed"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "N25 — A/C compressor electromagnetic clutch (male/device side)",
+      "Mates with 1J0 973 722 (female/harness side)"
+    ],
+    "notes": "VWVortex thread confirms 1J0973822 as the male mating connector for N25 (A/C clutch), pairing with the female harness-side 1J0973722. Both are unsealed 2.8mm 2-pin. This device-side connector attaches directly to the A/C compressor clutch coil. Failure of this connector is a common cause of A/C not engaging.",
+    "svgType": "inline2",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "Mk6",
+      "B4",
+      "B5",
+      "B6",
+      "B7"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "name": "1J0 973 824 — Starter motor connector (T4, male)",
+    "family": "VW 2.8 Tab",
+    "manufacturer": "VAG proprietary (OEM)",
+    "pins": 4,
+    "layout": "2×2",
+    "partNumbers": [
+      "1J0 973 824"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm VAG Tab",
+    "gaugeRange": "0.5–2.5 mm²",
+    "locking": "Tab latch",
+    "sealed": false,
+    "terminals": [
+      "JPTA.SWS-SKT",
+      "JPTA.SWS-PIN2"
+    ],
+    "seals": [
+      "N/A — unsealed"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "T4 — 4-pin connector near starter motor (male/harness side)",
+      "Carries starter trigger signal, backup circuits, and sensor feeds routed near the starter"
+    ],
+    "notes": "VWVortex thread lists T4 as the designation for this connector location near the starter. The male 1J0973824 is the harness side. 4-pin 2.8mm unsealed in the lower engine bay. T-prefix designations in VAG wiring diagrams indicate a multi-pin inline connector at a specific harness junction point rather than a component connector.",
+    "svgType": "grid22",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "B4",
+      "B5"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "name": "1J0 973 837 — T14 battery area connector (mixed pins)",
+    "family": "Mixed Pin Connector",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 14,
+    "layout": "Mixed 1.5mm and 2.8mm cavities",
+    "partNumbers": [
+      "1J0 973 837"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "Mixed 1.5mm and 2.8mm",
+    "gaugeRange": "0.35–2.5 mm²",
+    "locking": "Multi-row housing latch",
+    "sealed": false,
+    "terminals": [
+      "N 10335706 (1.5mm cavities)",
+      "N 10318905 (2.8mm cavities)"
+    ],
+    "seals": [
+      "N/A — unsealed"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "T14 — 14-pin junction connector located near the battery",
+      "Consolidates multiple circuits from the engine bay into a single harness connector near the battery/fuse box area"
+    ],
+    "notes": "VWVortex thread notes this as a mixed 1.5mm and 2.8mm pin connector — unusual since most VAG connectors use a single pin size. Located near the battery (T14 designation). This type of mixed-pitch connector is used at major harness junction points where both signal (1.5mm) and power (2.8mm) circuits meet. Relatively uncommon and less well documented.",
+    "svgType": "grid24",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "B4",
+      "B5"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "name": "357 972 771 — Starter motor 2-pin (4.8mm)",
+    "family": "Standard Power Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 2,
+    "layout": "1×2 inline",
+    "partNumbers": [
+      "357 972 771",
+      "357972771"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "4.8mm",
+    "gaugeRange": "1.5–6.0 mm²",
+    "locking": "Heavy tab latch",
+    "sealed": false,
+    "terminals": [
+      "N 10319103 (0.5–1.0mm²)",
+      "N 10319203 (1.5–2.5mm²)"
+    ],
+    "seals": [
+      "N/A — unsealed, high-current"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard high-current housing"
+      }
+    ],
+    "usage": [
+      "B — Starter motor power connector (terminal 30 / +12V direct battery feed)",
+      "High-current supply and earth connections at the starter motor"
+    ],
+    "notes": "VWVortex thread lists 357972771 under 4.8mm connectors as the starter motor connector (B designation in VAG wiring). 4.8mm terminals carry high current — appropriate for starter motor inrush. The 357-prefix dates this to the Mk3/Corrado era but this part number covers the Mk4 starter connector too. Uses the heavier SPT/Standard Power Timer terminal series.",
+    "svgType": "power2",
+    "platforms": [
+      "Mk2",
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "1J0 937 773 — Fuse box connector (battery top, 4.8mm)",
+    "family": "Standard Power Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 6,
+    "layout": "2×3",
+    "partNumbers": [
+      "1J0 937 773"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "4.8mm",
+    "gaugeRange": "1.5–6.0 mm²",
+    "locking": "Heavy multi-row latch",
+    "sealed": false,
+    "terminals": [
+      "N 10319103",
+      "N 10319203",
+      "N 10319303"
+    ],
+    "seals": [
+      "N/A — unsealed"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Fuse box connector"
+      }
+    ],
+    "usage": [
+      "Main fuse box connector on top of battery — Mk4 Golf/Jetta/Bora/New Beetle",
+      "Carries main supply feeds from battery to fuse/relay box"
+    ],
+    "notes": "VWVortex thread lists 1J0937773 as the fuse box connector on top of the battery. 6-pin 4.8mm high-current connector carrying main battery distribution feeds. The 937-prefix indicates a fuse/relay box component in the VAG numbering system. Failure or corrosion at this connector causes widespread electrical gremlins — it carries feeds to multiple relay and fuse circuits.",
+    "svgType": "grid23",
+    "platforms": [
+      "Mk4",
+      "B5",
+      "8L"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "name": "1J0 973 203 — Radiator fan switch (2-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 2,
+    "layout": "1×2 inline",
+    "partNumbers": [
+      "1J0 973 203"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Radiator/coolant fan thermal switch — lower radiator mount",
+      "Thermoswitch that triggers coolant fan at temperature threshold (typically 92–95°C)"
+    ],
+    "notes": "VWVortex thread confirms 1J0973203 as the radiator fan switch connector. Located at the lower radiator hose or bottom of the radiator where the thermal switch screws in. 2-pin 1.5mm sealed. Simple on/off thermal switch — when coolant reaches threshold the switch closes and triggers the fan relay. Common failure on higher-mileage Mk4s.",
+    "svgType": "inline2",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "name": "1J0 973 723 — Engine speed sender (G28, crank sensor)",
+    "family": "VW 2.8 Tab",
+    "manufacturer": "VAG proprietary (OEM)",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1J0 973 723G",
+      "1J0 973 723"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm VAG Tab",
+    "gaugeRange": "0.5–1.5 mm²",
+    "locking": "Tab latch",
+    "sealed": true,
+    "terminals": [
+      "JPTA.SWS-SKT",
+      "JPTA.SWS-PIN2"
+    ],
+    "seals": [
+      "Integral"
+    ],
+    "colors": [
+      {
+        "hex": "#888",
+        "name": "Grey",
+        "ctx": "G28 crank sensor variant"
+      },
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "G22 speedometer sender variant"
+      }
+    ],
+    "usage": [
+      "G28 — Engine speed sender (crankshaft position sensor) — 1J0973723G",
+      "G22 — Speedometer sender on gearbox — 1J0973723 (without G suffix)"
+    ],
+    "notes": "VWVortex thread distinguishes two variants: 1J0973723 (no suffix) for G22 speedometer sender on gearbox, and 1J0973723G (G suffix) for G28 engine speed/crank sensor. The G28 application is critical — this is the crankshaft position sensor connector. Loss of G28 signal = no-start or stall condition. Note this part already exists in our DB as a G22/G28 entry — this entry clarifies the G suffix distinction.",
+    "svgType": "inline3",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "B4",
+      "B5",
+      "B6",
+      "8L"
+    ],
+    "imageUrl": "",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part number reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
       }
     ]
   }
