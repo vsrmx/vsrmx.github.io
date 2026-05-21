@@ -7261,6 +7261,1319 @@ const connectors = [
         "u": "https://www.034motorsport.com/checking-ecu-tcu-box-code-software-version-audi-volkswagen"
       }
     ]
+  },
+  {
+    "id": 96,
+    "name": "06A 973 722 — Cylinder head temp sensor (2-pin)",
+    "family": "VW 2.8 Tab",
+    "manufacturer": "VAG proprietary (OEM)",
+    "pins": 2,
+    "layout": "1×2 inline",
+    "partNumbers": [
+      "06A 973 722"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm VAG Tab",
+    "gaugeRange": "0.5–1.5 mm²",
+    "locking": "Tab latch with contact locking mechanism",
+    "sealed": true,
+    "terminals": [
+      "JPTA.SWS-SKT",
+      "JPTA.SWS-PIN2"
+    ],
+    "seals": [
+      "JPTA-SL"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Cylinder head temperature sensor — 06A engine code (1.8T AEB/AUG/AWT, 2.0 APK/AQY)",
+      "Found on Mk4 Golf/Jetta 1.8T and 2.0 8V with 06A engine designation"
+    ],
+    "notes": "ETKA confirms 06A 973 722 as Connection piece for cylinder sensor circuits. The 06A prefix identifies it as specific to the 06A engine family (1.8T and 2.0 8V variants). Physically similar to 1J0 973 722 but different keying — do not interchange.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5",
+      "8L"
+    ],
+    "imageUrl": "",
+    "svgType": "inline2",
+    "refs": [
+      {
+        "l": "VWVortex: Connector part numbers reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "name": "1J0 906 233 / 443 — Radiator fan connector (3-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1J0 906 233",
+      "1J0 906 443"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Radiator cooling fan motor connector — all Mk4 Golf/Jetta/Bora/New Beetle",
+      "1J0 906 233 = left/driver side fan; 1J0 906 443 = right/passenger side fan"
+    ],
+    "notes": "ETKA lists both 1J0 906 233 and 1J0 906 443 as radiator fan connectors — left and right respectively on dual-fan setups. Single-fan setups use 233 only. The 906-prefix indicates an engine management / sensor-related component in VAG numbering. Very commonly needed on Mk4 due to brittle connector tabs from heat exposure.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "inline3",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (engine wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "name": "1J0 906 234 — Radiator fan control unit (4-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 4,
+    "layout": "2×2",
+    "partNumbers": [
+      "1J0 906 234"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch with secondary lock",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Radiator fan control unit / afterrun relay connector — later Mk4 (post 1J-Y VIN)",
+      "Also used for A/C pressure sensor in some configurations"
+    ],
+    "notes": "ETKA confirms Connection piece for radiator fan control unit and pressure sensor. The 4-pin variant supersedes the earlier 3-pin on later Mk4 production (post 1J-Y-000 001). Used where the fan is controlled via a separate control module rather than direct relay switching.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "grid22",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (engine wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "1J0 973 775 — MAF sensor 5-pin (G70, confirmed ETKA)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 5,
+    "layout": "1×5 inline",
+    "partNumbers": [
+      "1J0 973 775",
+      "1J0 973 775A",
+      "1J0 973 999A"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch with secondary lock",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard MAF connector"
+      }
+    ],
+    "usage": [
+      "G70 — Mass air flow (MAF) sensor, all 1.8T, VR6, 2.0T engines",
+      "ETKA confirms: Connection piece Air mass meter (5-pin)"
+    ],
+    "notes": "ETKA directly confirms 1J0 973 775 as the 5-pin air mass meter (MAF) connector. The suffix variants (775A, 999A) are direct supersessions. Pin 1 = heater +12V, Pin 2 = heater earth, Pin 3 = IAT signal, Pin 4 = earth, Pin 5 = MAF signal. One of the most important engine bay connectors — failure causes rich/lean running and MAF fault codes.",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "Mk6",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "8L",
+      "8P"
+    ],
+    "imageUrl": "",
+    "svgType": "inline5",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (engine wiring)",
+        "u": "https://vsrmx.github.io/"
+      },
+      {
+        "l": "VWVortex: Connector part numbers reference",
+        "u": "https://www.vwvortex.com/threads/electrical-connector-part-numbers.6948714/"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "1J0 919 231 — Fuel gauge sender (4-pin, in-tank)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 4,
+    "layout": "2×2",
+    "partNumbers": [
+      "1J0 919 231"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      },
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Some later variants"
+      }
+    ],
+    "usage": [
+      "Fuel gauge sender unit connector — in-tank, Mk4 Golf/Jetta/Bora/New Beetle",
+      "ETKA: Sender for fuel gauge. Combined fuel level + fuel pump connector on some variants"
+    ],
+    "notes": "ETKA confirms 1J0 919 231 as the fuel gauge sender connector. 4-pin because the in-tank sender unit on Mk4 combines the fuel level float sender with the fuel pump control — pins carry: pump +12V, pump earth, sender signal, sender earth. Common failure on high-mileage Mk4s from fuel contamination corrosion.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "grid22",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "name": "1J0 973 714 — DBW throttle body 8-pin (with cruise control)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 8,
+    "layout": "2×4",
+    "partNumbers": [
+      "1J0 973 714",
+      "4A0 973 714"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch with secondary lock",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard DBW connector"
+      }
+    ],
+    "usage": [
+      "Electronic throttle body (DBW) connector — models with cruise control system",
+      "ETKA: Throttle valve control element for models with cruise control",
+      "1J0 973 714 = Mk4 post-1J-Y; 4A0 973 714 = earlier B5 Audi / pre-Mk4 variant"
+    ],
+    "notes": "ETKA distinguishes the 8-pin DBW throttle connector for cruise-control-equipped vehicles from the 6-pin 1J0 973 713 on non-cruise vehicles — extra pins carry cruise control signal circuits. The 4A0 973 714 is the earlier equivalent from the B5 Audi era. Failure causes P1545 throttle actuator fault and limp mode.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5",
+      "B6",
+      "C5",
+      "8L"
+    ],
+    "imageUrl": "",
+    "svgType": "grid24",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (engine wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "name": "357 972 755 — Ignition coil 5-pin (pre-Mk4 era)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 5,
+    "layout": "1×5 inline",
+    "partNumbers": [
+      "357 972 755"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Ignition coil connector — pre-Mk4 era (Mk3 Golf/Vento, Corrado, early Passat B4)",
+      "ETKA: Connection piece Ignition coil, pre 1J-X-999 999 VIN cutoff"
+    ],
+    "notes": "ETKA lists 357 972 755 specifically for pre-1J-X VIN vehicles — i.e. Mk3 era. The 357-prefix indicates Passat B3/B4 origin. 5-pin ignition coil arrangement differs from the 4-pin used on Mk4. Superseded by 1J0 973 724 on Mk4 production. Still needed for Mk3 Golf, Vento, Corrado wiring repairs.",
+    "platforms": [
+      "Mk2",
+      "Mk3",
+      "B3",
+      "B4"
+    ],
+    "imageUrl": "",
+    "svgType": "inline5",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (engine wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "name": "4D0 973 725 — Ignition coil 5-pin (V8/V6 Audi)",
+    "family": "VW 2.8 Tab",
+    "manufacturer": "VAG proprietary (OEM)",
+    "pins": 5,
+    "layout": "1×5 inline",
+    "partNumbers": [
+      "4D0 973 725"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm VAG Tab",
+    "gaugeRange": "0.35–1.5 mm²",
+    "locking": "Tab latch",
+    "sealed": true,
+    "terminals": [
+      "JPTA.SWS-SKT",
+      "JPTA.SWS-PIN2"
+    ],
+    "seals": [
+      "JPTA-SL"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Ignition coil connector (5-pin) — Audi V6 2.8/3.0 and V8 4.2 coil-on-plug, post 1J-Y VIN",
+      "Fits: Audi A4 B5/B6 2.8 V6, A6 C5 2.8/4.2, A8 D2 4.2, TT 3.2 V6"
+    ],
+    "notes": "ETKA confirms 4D0 973 725 as a 5-pin ignition coil connector for post 1J-Y-000 001 VIN (i.e. 2000+ production). The 4D0 prefix indicates Audi A8 D2 origin. Used on the larger multi-cylinder Audi engines with individual coil-on-plug. 5 pins: coil primary, secondary sense, supply, earth, and shielding on some variants.",
+    "platforms": [
+      "B5",
+      "B6",
+      "B7",
+      "C5",
+      "C6"
+    ],
+    "imageUrl": "",
+    "svgType": "inline5",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (engine wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "name": "1J0 937 733 — B-pillar coupling element (10-pin)",
+    "family": "Econoseal III",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 10,
+    "layout": "2×5",
+    "partNumbers": [
+      "1J0 937 733"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm Econoseal",
+    "gaugeRange": "0.35–2.5 mm²",
+    "locking": "Side tab with CPA",
+    "sealed": true,
+    "terminals": [
+      "000 979 009 A",
+      "000 979 131 A"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "B-pillar coupling element"
+      }
+    ],
+    "usage": [
+      "B-pillar harness coupling element — central locking, alarm, interior lighting junction",
+      "ETKA: Coupling element b-pillar for vehicles with central locking system"
+    ],
+    "notes": "ETKA confirms 1J0 937 733 as a 10-pin black B-pillar coupling connector. This is the main harness junction at the B-pillar where the door loom meets the central body loom — carries central locking, interior light triggering, and alarm circuits. 10-pin 2×5 layout. Very commonly involved in central locking issues on Mk4.",
+    "platforms": [
+      "Mk4",
+      "Mk5"
+    ],
+    "imageUrl": "",
+    "svgType": "grid24",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "name": "1J0 972 706 — Tail light connector (6-pin)",
+    "family": "Econoseal III",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 6,
+    "layout": "2×3",
+    "partNumbers": [
+      "1J0 972 706",
+      "893 971 636"
+    ],
+    "tyco": [
+      "172169-1"
+    ],
+    "terminalSize": "2.8mm Econoseal",
+    "gaugeRange": "0.35–2.5 mm²",
+    "locking": "Side tab with CPA",
+    "sealed": true,
+    "terminals": [
+      "000 979 009 A",
+      "000 979 131 A"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      },
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Later variants"
+      }
+    ],
+    "usage": [
+      "Tail light / rear lamp cluster connector — Mk4 Golf/Jetta/Bora, Passat B5",
+      "ETKA: Connection piece Tail light (6-pin). 893 971 636 is the earlier Mk3 equivalent"
+    ],
+    "notes": "ETKA lists both 1J0 972 706 (later Mk4, post 1J-Y) and 893 971 636 (earlier/Mk3) as 6-pin tail light connectors. Carries: brake light, tail light, reversing light, indicator, fog, and earth circuits. Common failure point — water ingress into boot/trunk area corrodes the connector. The 893 prefix indicates the Mk3 Audi 80 era origin for the earlier part.",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "B4",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "grid23",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      },
+      {
+        "l": "Corsa-Technic: Econoseal III Series",
+        "u": "https://www.corsa-technic.com/category.php?category_id=355"
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "name": "1J0 972 924 — Headlight range control motor (3-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1J0 972 924"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Headlight levelling motor connector (headlight range control / beam adjustment motor)",
+      "ETKA: Connection piece headlight range control. Mk4 Golf/Jetta/Passat B5"
+    ],
+    "notes": "The headlight levelling motor (adjusts beam angle based on load) uses this 3-pin connector. Pin 1 = +12V, Pin 2 = earth, Pin 3 = position feedback signal. Failure causes static headlight aim — MOT/TÜV failure in many countries. Very commonly damaged during headlight removal.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5",
+      "B6"
+    ],
+    "imageUrl": "",
+    "svgType": "inline3",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "name": "1J0 972 483 — Accelerator pedal position sensor (3-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1J0 972 483",
+      "1J0 972 483 A"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch with gasket",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Accelerator pedal position sensor (G79/G185) — DBW / drive-by-wire pedal unit",
+      "ETKA: Connection piece Accelerator sensor for vehicles with electronic accelerator"
+    ],
+    "notes": "ETKA confirms 1J0 972 483 specifically for vehicles with electronic accelerator (DBW). The A-suffix variant is a minor revision. The pedal position sensor has two 3-pin connectors (redundant sensors G79 and G185) — both use this housing. Failure causes throttle response issues and P1558/P1564 codes.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "Mk6",
+      "B5",
+      "B6",
+      "B7",
+      "8L",
+      "8P"
+    ],
+    "imageUrl": "",
+    "svgType": "inline3",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "name": "357 959 545 — Blower motor switch (6-pin, heater panel)",
+    "family": "Econoseal III",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 6,
+    "layout": "2×3",
+    "partNumbers": [
+      "357 959 545"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "2.8mm Econoseal",
+    "gaugeRange": "0.35–2.5 mm²",
+    "locking": "Side tab",
+    "sealed": false,
+    "terminals": [
+      "000 979 009 A"
+    ],
+    "seals": [
+      "N/A — interior dry location"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Blower motor (heater fan) speed switch connector — manual heater control panel",
+      "ETKA: Connection piece switch for blower motor. Pre-Mk4 / early Mk4 (pre-1J-Y VIN)"
+    ],
+    "notes": "ETKA confirms 357 959 545 as the 6-pin blower switch connector on the heater control panel. The 357-prefix indicates Passat B3 origin. Used through early Mk4 production (pre-1J-Y VIN cutoff). Unsealed interior application. Common failure on higher-mileage vehicles — the switch contacts wear causing intermittent fan speeds.",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "grid23",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "name": "1J0 972 702 — Interior temp sensor footwell (2-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 2,
+    "layout": "1×2 inline",
+    "partNumbers": [
+      "1J0 972 702"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch with contact locking mechanism",
+    "sealed": false,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N/A"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Interior temperature sensor connector (footwell area / vent region)",
+      "ETKA: Connection piece Temperature sensor Footwell vent. Mk4 climate control system"
+    ],
+    "notes": "ETKA confirms the footwell vent temperature sensor application. Used on Climatronic (automatic A/C) equipped Mk4 Golf/Bora/Jetta to monitor interior air temperature at the footwell vent outlet. 2-pin unsealed — interior location.",
+    "platforms": [
+      "Mk4",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "inline2",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "name": "1J0 972 752 — Fan motor connector (2-pin, A/C)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 2,
+    "layout": "1×2 inline",
+    "partNumbers": [
+      "1J0 972 752"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": false,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N/A"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "A/C condenser fan motor connector — 2-pin supply and earth",
+      "ETKA: Connection piece Fan motor. Mk4 Golf/Jetta/Bora with air conditioning"
+    ],
+    "notes": "Confirmed by ETKA as the fan motor connection for the A/C system (condenser fan or blower). Distinguished from the radiator fan connector (1J0 906 233) by the 972-prefix (body wiring) vs 906-prefix (engine management). Unsealed — in dry underbonnet or interior location.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "inline2",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body/comfort wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "name": "1J0 972 753 — Fan control / resistor pack (3-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1J0 972 753"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": false,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N/A"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Heater blower motor resistor / fan control module connector — 3-pin signal+supply+earth",
+      "ETKA: Connection piece Fan control. Mk4 heater and A/C system"
+    ],
+    "notes": "The fan control connector carries the speed control signal to the blower resistor pack or fan control module. 3-pin: supply, earth, and speed control signal. Common failure — the resistor pack runs hot and the connector terminals corrode or melt at higher fan speeds.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "inline3",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body/comfort wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "name": "1J0 973 332 — Alarm system warning light (2-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 2,
+    "layout": "1×2 inline",
+    "partNumbers": [
+      "1J0 973 332"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": false,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N/A"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Anti-theft alarm system warning light connector — door sill LED indicator",
+      "ETKA: Connection piece Light anti-theft alarm system"
+    ],
+    "notes": "The alarm warning light (LED in the door sill or dashboard) uses this 2-pin connector. Common on Mk4 models with factory alarm — the LED flashes when the alarm is armed. Small and easily overlooked during door card removal.",
+    "platforms": [
+      "Mk4",
+      "Mk5"
+    ],
+    "imageUrl": "",
+    "svgType": "inline2",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 113,
+    "name": "1J0 937 713 — Door lock actuator connector (3-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1J0 937 713"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Tab latch with contact locking mechanism",
+    "sealed": false,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N/A"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Electrically adjustable door lock actuator connector — 3-pin supply, earth, signal",
+      "ETKA: Connection piece electrically adjustable door lock. All 4 doors on central locking equipped Mk4"
+    ],
+    "notes": "ETKA confirms 3-pin electrically adjustable door lock application. This connector is at the door lock mechanism inside each door — carries supply, earth, and lock/unlock signal. Very commonly damaged during door card removal. The 937-prefix indicates a fuse/relay/control component category.",
+    "platforms": [
+      "Mk4",
+      "Mk5"
+    ],
+    "imageUrl": "",
+    "svgType": "inline3",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "name": "1J0 973 115 — Door lock cylinder connector (3-pin)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1J0 973 115"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": false,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N/A"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Lock cylinder switch connector — door barrel micro-switch (key sense)",
+      "ETKA: Connection piece Lock cylinders. Mk4 Golf/Jetta all door locks"
+    ],
+    "notes": "The lock cylinder switch detects key insertion and turning to trigger the central locking system. 3-pin: supply, earth, and signal to the comfort control module. Both driver and passenger door locks have this connector on Mk4. Failure causes central locking not responding to key or incorrect door priority.",
+    "platforms": [
+      "Mk4",
+      "Mk5"
+    ],
+    "imageUrl": "",
+    "svgType": "inline3",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 115,
+    "name": "4B0 971 636 — Steering angle sensor ESP (6-pin)",
+    "family": "Econoseal III",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 6,
+    "layout": "2×3",
+    "partNumbers": [
+      "4B0 971 636"
+    ],
+    "tyco": [
+      "172169-1"
+    ],
+    "terminalSize": "2.8mm Econoseal",
+    "gaugeRange": "0.35–2.5 mm²",
+    "locking": "Side tab with CPA",
+    "sealed": true,
+    "terminals": [
+      "000 979 009 A",
+      "000 979 131 A"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Steering angle sensor (G85) connector — ESP/EDC equipped Mk4/B5",
+      "ETKA: Connection piece steering sensor for vehicles with electronic stability programme"
+    ],
+    "notes": "ETKA specifically calls out ESP-equipped vehicles. The steering angle sensor G85 mounts on the steering column and monitors steering wheel angle for ESP/stability control. 6-pin: two CAN bus lines, supply, earth, and two signal wires. Failure triggers ESP warning and disables stability control. The 4B0-prefix indicates B6 Audi A4 origin.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5",
+      "B6",
+      "C5"
+    ],
+    "imageUrl": "",
+    "svgType": "grid23",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      },
+      {
+        "l": "Corsa-Technic: Econoseal III",
+        "u": "https://www.corsa-technic.com/category.php?category_id=355"
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "name": "357 919 754 — Coolant temp gauge sender (4-pin, Mk3 era)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 4,
+    "layout": "2×2",
+    "partNumbers": [
+      "357 919 754"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Coolant temperature sender for gauge (G2) connector — pre-Mk4 era",
+      "ETKA: Connection piece Temperature sensor for coolant temperature gauge. Pre 1J-X-999 999 VIN"
+    ],
+    "notes": "ETKA shows 357 919 754 with a VIN cutoff of 1J-X-999 999 — meaning it applies to the earliest Mk4 production and the Mk3 era before it. The 357-prefix is Passat B3/B4 origin. The 4-pin housing combines the coolant gauge sender G2 with possibly a second temperature circuit. Superseded by 1J0 973 712 on later production.",
+    "platforms": [
+      "Mk2",
+      "Mk3",
+      "Mk4",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "imageUrl": "",
+    "svgType": "grid22",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (engine wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "name": "1H0 973 203 — Radiator thermoswitch (3-pin, pre-Mk4)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "1H0 973 203"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.0 mm²",
+    "locking": "Side latch with gasket",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Radiator fan thermoswitch connector (3-stage switch) — Mk3 and early Mk4",
+      "ETKA: Connection piece temperature switch — with gasket. Pre 1J-X VIN"
+    ],
+    "notes": "3-pin variant of the radiator thermoswitch (vs 2-pin on simpler systems) — the third pin carries a second switching stage for high-speed fan operation. The 1H0-prefix indicates Mk3 Golf origin. ETKA shows this with a pre-1J-X VIN cutoff. Gasket-sealed — mounts directly into the lower radiator hose or bottom of the radiator.",
+    "platforms": [
+      "Mk2",
+      "Mk3",
+      "Mk4",
+      "B3",
+      "B4"
+    ],
+    "imageUrl": "",
+    "svgType": "inline3",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 971 (engine wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 118,
+    "name": "8A0 971 978 — 13-pin trailer socket housing",
+    "family": "Round Trailer Connector",
+    "manufacturer": "Various (ISO 11446)",
+    "pins": 13,
+    "layout": "Round 13-pin ISO 11446",
+    "partNumbers": [
+      "8A0 971 978"
+    ],
+    "tyco": [
+      "N/A — ISO 11446 standard"
+    ],
+    "terminalSize": "Mixed 1.5–4.0mm²",
+    "gaugeRange": "0.75–4.0 mm²",
+    "locking": "Bayonet / screw ring",
+    "sealed": true,
+    "terminals": [
+      "Mixed — depends on circuit"
+    ],
+    "seals": [
+      "Rubber gasket ring"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard trailer socket housing"
+      }
+    ],
+    "usage": [
+      "13-pin trailer socket (ISO 11446 / NEN 1010 European standard)",
+      "ETKA: rd. connector sleeve housing Coupling element for trailer towing. Universal VAG tow bar fitment"
+    ],
+    "notes": "The 13-pin round European trailer socket is ISO 11446 standard — used across all VAG tow bar installations. Pin assignments: 1=L indicator, 2=fog, 3=earth, 4=R indicator, 5=R tail, 6=brake, 7=L tail, 8=reverse/aux, 9=permanent +12V, 10=switched +12V, 11=earth return, 12=spare, 13=spare. The 8A0-prefix indicates Audi 80 B4 origin.",
+    "platforms": [
+      "Mk3",
+      "Mk4",
+      "Mk5",
+      "Mk6",
+      "Mk7",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "All VAG"
+    ],
+    "imageUrl": "",
+    "svgType": "obd16",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "name": "8D0 971 701 — Tow bar wiring connector (3-pin, Audi)",
+    "family": "Micro Timer",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 3,
+    "layout": "1×3 inline",
+    "partNumbers": [
+      "8D0 971 701"
+    ],
+    "tyco": [
+      "N/A"
+    ],
+    "terminalSize": "1.5mm",
+    "gaugeRange": "0.35–1.5 mm²",
+    "locking": "Side latch",
+    "sealed": true,
+    "terminals": [
+      "N 10335706",
+      "N 10335807"
+    ],
+    "seals": [
+      "N 017 330 1"
+    ],
+    "colors": [
+      {
+        "hex": "#d4cfc8",
+        "name": "Natural",
+        "ctx": "Standard"
+      }
+    ],
+    "usage": [
+      "Tow bar wiring sub-connector — used with towing facility on B5 Audi A4, Passat B5",
+      "ETKA: Flat contact housing for models with towing facility (3-pin)"
+    ],
+    "notes": "ETKA lists 8D0 971 701 specifically for models with towing facility. The 8D0-prefix indicates Audi A4 B5 origin. This 3-pin connector is a sub-connector within the tow bar wiring loom — not the main 13-pin socket but an inline connector in the feed harness. Used where VAG's factory tow bar kit connects to the body harness.",
+    "platforms": [
+      "B5",
+      "B6",
+      "Mk4",
+      "Mk5"
+    ],
+    "imageUrl": "",
+    "svgType": "inline3",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (body wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "name": "4B0 971 833 / 834 — Auto-dimming mirror (6-pin)",
+    "family": "Econoseal III",
+    "manufacturer": "TE Connectivity / AMP",
+    "pins": 6,
+    "layout": "2×3",
+    "partNumbers": [
+      "4B0 971 833",
+      "4B0 971 834"
+    ],
+    "tyco": [
+      "172169-1"
+    ],
+    "terminalSize": "2.8mm Econoseal",
+    "gaugeRange": "0.35–2.5 mm²",
+    "locking": "Side tab",
+    "sealed": false,
+    "terminals": [
+      "000 979 009 A"
+    ],
+    "seals": [
+      "N/A — interior"
+    ],
+    "colors": [
+      {
+        "hex": "#1a1a1a",
+        "name": "Black",
+        "ctx": "Standard interior mirror connector"
+      }
+    ],
+    "usage": [
+      "Auto-dimming interior mirror connector — rain/light sensor equipped mirrors",
+      "ETKA: 4B0 971 833 = Interior mirror, anti-dazzle; 4B0 971 834 = Interior mirror (non-dimming)",
+      "Fits: Mk4 Golf with rain/light sensor, Passat B5, Audi A4 B5/B6"
+    ],
+    "notes": "ETKA distinguishes two variants: 4B0 971 833 for auto-dimming (anti-dazzle) mirrors and 4B0 971 834 for standard mirrors with just the lighting circuit. Both are 6-pin Econoseal. The auto-dimming version also carries the rain/light sensor signals. The 4B0-prefix indicates B6 Audi A4 origin.",
+    "platforms": [
+      "Mk4",
+      "Mk5",
+      "B5",
+      "B6"
+    ],
+    "imageUrl": "",
+    "svgType": "grid23",
+    "refs": [
+      {
+        "l": "ETKA Mk4 Group 972 (interior wiring)",
+        "u": "https://vsrmx.github.io/"
+      }
+    ]
   }
 ];
 
