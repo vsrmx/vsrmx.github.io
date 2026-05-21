@@ -9270,20 +9270,7 @@ function render(){
     g.innerHTML='<div class="empty">// no connectors match — try a broader search</div>';
     return;
   }
-  // Use flat list when any filter/search is active
-  const isFiltered=document.getElementById('search').value.trim()||
-    document.getElementById('filterPins').value||
-    document.getElementById('filterFamily').value||
-    document.getElementById('filterMfr').value||
-    document.getElementById('filterColor').value||
-    document.getElementById('filterPlatform').value||
-    document.getElementById('filterFunc').value;
-  if(isFiltered){
-    g.innerHTML=filtered.map(c=>cardHTML(c)).join('');
-    return;
-  }
-  // Grouped view
-  const collapsed=getCollapseState();
+  // Always grouped — empty groups are simply skipped
   const groups={};
   FUNC_ORDER.forEach(f=>groups[f]=[]);
   filtered.forEach(c=>{const f=c.func||'Generic / Multi-use';if(!groups[f])groups[f]=[];groups[f].push(c);});
