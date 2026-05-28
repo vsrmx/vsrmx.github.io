@@ -452,11 +452,13 @@
   .recently-viewed {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     flex-wrap: wrap;
-    padding: 7px 2rem;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 12px;
   }
   .recently-viewed-label {
     font-size: 10px;
@@ -466,23 +468,28 @@
     letter-spacing: .06em;
     white-space: nowrap;
     flex-shrink: 0;
+    padding-right: 4px;
+    border-right: 1px solid var(--border);
+    margin-right: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
   }
   .recent-item {
     font-size: 11px;
     font-family: var(--mono);
     color: var(--text2);
-    background: var(--surface);
+    background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 2px 8px;
+    border-radius: 4px;
+    padding: 3px 9px;
     cursor: pointer;
-    transition: border-color .12s, color .12s;
+    transition: border-color .12s, color .12s, background .12s;
     white-space: nowrap;
-    max-width: 200px;
+    max-width: 220px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .recent-item:hover { border-color: var(--accent); color: var(--accent); }
+  .recent-item:hover { border-color: var(--accent); color: var(--accent); background: var(--surface2); }
   .recent-clear {
     margin-left: auto;
     font-size: 10px;
@@ -492,8 +499,10 @@
     border: none;
     cursor: pointer;
     flex-shrink: 0;
-    padding: 0;
+    padding: 2px 6px;
     transition: color .12s;
+    text-transform: uppercase;
+    letter-spacing: .04em;
   }
   .recent-clear:hover { color: var(--accent); }
 
@@ -583,7 +592,7 @@
   .modal-print-btn:hover { border-color: var(--accent); color: var(--accent); }
 
   @media (max-width: 640px) {
-    .recently-viewed { padding: 6px 1rem; }
+    .recently-viewed { padding: 8px 10px; }
     .similar-grid { grid-template-columns: 1fr 1fr; }
     .buy-links { gap: 4px; }
   }
