@@ -269,12 +269,12 @@
 <!-- ── Tab nav ─────────────────────────────────────────── -->
 <div class="tab-nav" id="tabNav">
   <button class="tab-btn active" onclick="switchTab('connectors',this)">Connectors</button>
+  <button class="tab-btn" onclick="switchTab('recent',this)">Recent</button>
   <button class="tab-btn" onclick="switchTab('reference',this)">Reference</button>
 </div>
 
 <!-- ── Connectors tab ──────────────────────────────────── -->
 <main id="tab-connectors" class="tab-pane active">
-  <div id="recently-viewed" style="display:none"></div>
   <div class="grid" id="grid"></div>
   <footer>
     <span>VAG Connector DB — community reference</span>
@@ -283,6 +283,11 @@
     <span>·</span>
     <span>Manufacturers: TE Connectivity / AMP · KOSTAL · Bosch · Yazaki · Hirschmann</span>
   </footer>
+</main>
+
+<!-- ── Recent tab ──────────────────────────────────────── -->
+<main id="tab-recent" class="tab-pane" style="display:none">
+  <div class="recent-pane" id="recent-pane"></div>
 </main>
 
 <!-- ── Reference tab ───────────────────────────────────── -->

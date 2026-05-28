@@ -193,22 +193,31 @@ function addRecentlyViewed(id){
   renderRecentlyViewed();
 }
 function renderRecentlyViewed(){
-  const el=document.getElementById('recently-viewed');
-  if(!el)return;
+  const pane=document.getElementById('recent-pane');
+  const tabBtn=document.querySelectorAll('.tab-btn')[1]; // Recent tab button
+  if(!pane)return;
   const r=getRecentlyViewed();
-  if(!r.length){el.style.display='none';return;}
-  const items=r.map(id=>{
-    const c=connectors.find(x=>x.id===id);
-    if(!c)return'';
-    return`<button class="recent-item" onclick="openModal(${c.id})" title="${c.name}">${c.name}</button>`;
-  }).filter(Boolean).join('');
-  el.innerHTML=`<span class="recently-viewed-label">Recent</span>${items}<button class="recent-clear" onclick="clearRecentlyViewed()" title="Clear recently viewed">Clear</button>`;
-  el.style.display='flex';
+  if(!r.length){
+    pane.innerHTML='<div class="recent-empty"><div class="recent-empty-icon">⌕</div><div class="recent-empty-title">No recent connectors yet</div><div class="recent-empty-msg">Connectors you view will appear here for quick access.</div></div>';
+    if(tabBtn) tabBtn.dataset.count='';
+    return;
+  }
+  // Build cards using the same cardHTML function used in the grid
+  const cards=r.map(id=>connectors.find(x=>x.id===id)).filter(Boolean);
+  pane.innerHTML=`
+    <div class="recent-header">
+      <div>
+        <div class="recent-title">Recently viewed</div>
+        <div class="recent-subtitle">Your last ${cards.length} connector${cards.length===1?'':'s'} — quick access</div>
+      </div>
+      <button class="recent-clear-btn" onclick="clearRecentlyViewed()">Clear all</button>
+    </div>
+    <div class="grid">${cards.map(c=>cardHTML(c)).join('')}</div>`;
+  if(tabBtn) tabBtn.dataset.count=cards.length;
 }
 function clearRecentlyViewed(){
   try{localStorage.removeItem('vag-recent');}catch(e){}
-  const el=document.getElementById('recently-viewed');
-  if(el){el.style.display='none';}
+  renderRecentlyViewed();
 }
 
 // ─── DEEP LINKING ─────────────────────────────────────────────────────────────
@@ -392,12 +401,15 @@ function switchTab(tab, btn){
   btn.classList.add('active');
   // Show/hide panes
   document.getElementById('tab-connectors').style.display = tab === 'connectors' ? '' : 'none';
-  document.getElementById('tab-reference').style.display  = tab === 'reference'   ? '' : 'none';
-  // Hide filter panel when switching to reference
-  if(tab === 'reference'){
+  document.getElementById('tab-recent').style.display     = tab === 'recent'     ? '' : 'none';
+  document.getElementById('tab-reference').style.display  = tab === 'reference'  ? '' : 'none';
+  // Hide filter panel when switching away from connectors
+  if(tab !== 'connectors'){
     document.getElementById('filterPanel').classList.remove('open');
     document.getElementById('filterToggle').classList.remove('active');
   }
+  // Refresh Recent pane on entry in case new items were viewed
+  if(tab === 'recent') renderRecentlyViewed();
 }
 
 // ─── FILTER PANEL / DRAWER ───────────────────────────────────────────────────
