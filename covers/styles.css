@@ -1,0 +1,88 @@
+:root{
+  --bg:#ffffff;
+  --fg:#16161a;
+  --muted:#8a8a90;
+  --rule:rgba(0,0,0,.12);
+  --min:160px;            /* min cover width before columns wrap */
+  --nav-h:46px;           /* approx height of the sticky year nav */
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#101013;--fg:#ececf0;--muted:#8d8d96;--rule:rgba(255,255,255,.14);}
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.site-head{max-width:1200px;margin:0 auto;padding:34px 20px 6px;}
+.site-head h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.1;}
+.subtitle{color:var(--muted);margin:6px 0 0;font-size:.95rem;}
+.order-toggle{
+  margin-top:14px;font:inherit;font-size:.8rem;color:var(--fg);
+  background:transparent;border:1px solid var(--rule);border-radius:20px;
+  padding:6px 14px;cursor:pointer;transition:border-color .15s;
+}
+.order-toggle:hover{border-color:var(--muted);}
+
+/* sticky year jump-nav — body-level so it sticks for the whole page */
+.year-nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);}
+.year-nav-track{
+  max-width:1200px;margin:0 auto;display:flex;gap:6px;
+  overflow-x:auto;padding:10px 20px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;
+}
+.year-nav-track a{
+  flex:0 0 auto;font-size:.8rem;text-decoration:none;color:var(--muted);
+  border:1px solid var(--rule);border-radius:20px;padding:5px 12px;white-space:nowrap;
+  transition:color .15s,border-color .15s;
+}
+.year-nav-track a:hover{color:var(--fg);border-color:var(--muted);}
+
+.covers{max-width:1200px;margin:0 auto;padding:0 20px 64px;}
+.pvw-year-sec{scroll-margin-top:calc(var(--nav-h) + 8px);}
+.pvw-year-head{
+  position:sticky;top:var(--nav-h);background:var(--bg);
+  display:flex;align-items:baseline;gap:12px;padding:22px 0 12px;z-index:5;
+}
+.pvw-year{font-size:1.7rem;font-weight:700;letter-spacing:-.01em;line-height:1;}
+.pvw-rule{flex:1;height:1px;background:var(--rule);}
+.pvw-count{font-size:.78rem;color:var(--muted);white-space:nowrap;}
+
+.pvw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--min),1fr));gap:18px;margin:0 0 4px;}
+.pvw-cover{padding:0;margin:0;border:0;background:none;cursor:pointer;display:block;-webkit-tap-highlight-color:transparent;}
+.pvw-cover img{
+  width:100%;aspect-ratio:.74;object-fit:cover;border-radius:6px;background:var(--rule);
+  box-shadow:0 1px 5px rgba(0,0,0,.16);transition:transform .16s ease,box-shadow .16s ease;display:block;
+}
+.pvw-cover:hover img,.pvw-cover:focus-visible img{transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,.26);}
+
+@media(max-width:600px){
+  .site-head h1{font-size:1.6rem;}
+  .pvw-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .pvw-year{font-size:1.4rem;}
+}
+
+/* lightbox */
+.pvw-lb{
+  position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+  background:rgba(12,12,14,.93);opacity:0;visibility:hidden;transition:opacity .2s ease;padding:24px;
+}
+.pvw-lb.is-open{opacity:1;visibility:visible;}
+.pvw-lb-img{max-width:92vw;max-height:86vh;object-fit:contain;border-radius:4px;box-shadow:0 12px 50px rgba(0,0,0,.5);}
+.pvw-lb-cap{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#fff;font-size:.85rem;letter-spacing:.02em;opacity:.85;}
+.pvw-lb button{
+  position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;cursor:pointer;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .15s;line-height:1;
+}
+.pvw-lb button:hover{background:rgba(255,255,255,.24);}
+.pvw-lb-close{top:18px;right:18px;width:42px;height:42px;font-size:24px;}
+.pvw-lb-prev,.pvw-lb-next{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:30px;}
+.pvw-lb-prev{left:18px;}
+.pvw-lb-next{right:18px;}
+@media(max-width:600px){
+  .pvw-lb-prev,.pvw-lb-next{width:40px;height:40px;font-size:24px;}
+  .pvw-lb-prev{left:8px;}
+  .pvw-lb-next{right:8px;}
+}
